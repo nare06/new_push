@@ -1,0 +1,13 @@
+<div class="splash">
+<h1 class="fontedits"><%= @campus.name %></h1>
+<h2 class="fontedits"><%= @group.name %></h1>
+</div>
+ <div class="container"> 
+    <div class="row"> 
+    <div class="col-lg-8">
+		<%= render partial: "static_pages/event", collection: @events %>
+	</div>
+</div>
+</div>
+ 
+<!---------================================--Tab Contents: End---=========================------------>

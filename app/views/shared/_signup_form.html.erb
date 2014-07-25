@@ -1,0 +1,33 @@
+<%= form_for @user do |f| %>
+          <%= render 'shared/error_messages', :object => f.object %>     
+          <%= f.text_field :email, :placeholder =>'Email',class: 'form-control' %>
+          <%= f.password_field :password, :placeholder =>'Password',class: 'form-control'%><br>
+          <%= f.hidden_field :name, value:"New-Bee", readonly: "readonly" %>
+          <%= f.collection_select :campus, Campus.all, :id, :name,{:prompt => 'Please select your campus'},{class: "form-control"} %>
+          <%= f.hidden_field :role,class: 'form-control', value: "user", readonly: "readonly" %><br>      
+          <%= f.submit "Create my account", class: "btn btn-large btn-primary" %> 
+  <% end %>
+  <% if signed_in?%> 
+      <h4>Link Your Accounts</h4>
+      <% else %><br> 
+      <h4>Social logins </h4>
+      <% end %>
+     <div id="social">
+      <div class="social-icons-row" >
+        <% if @auth.where('provider'=>'facebook').present?%>             
+          <a href="#" target="_blank" style="color: blue;"><i class="icon-facebook"></i></a>
+            <% else %>
+             <a href="<%=user_omniauth_authorize_path(:facebook)%>" target="_blank"><i class="icon-facebook"></i></a>
+         <% end %>
+         <% if @auth.where('provider'=>'google_oauth2').present?%>
+            <a href="#" target="_blank" style="color: orange;"><i class="icon-google-plus"></i></a>
+              <% else %>
+               <a href="<%=user_omniauth_authorize_path(:google_oauth2)%>" target="_blank"><i class="icon-google-plus"></i></a> 
+          <% end %>
+          <% if @auth.where('provider'=>'twitter').present?%>
+            <a href="#" target="_blank" style="color: skyblue;"><i class="icon-twitter"></i></a>
+              <% else %>
+               <a href="<%=user_omniauth_authorize_path(:twitter)%>" target="_blank"><i class="icon-twitter"></i></a>
+          <% end %>
+         </div>
+       </div>

@@ -1,0 +1,119 @@
+<title></title>	
+
+<div class="container">
+   <div class="well">        				
+    <%= form_for @group,:html => {:novalidate =>'novalidate'} do |u| %>
+      <fieldset>                
+         <legend><h3>About the group</h3>
+         </legend>
+            <%= render 'shared/error_messages', :object => u.object %>  
+             <br>
+             <br>
+             <div class="row">
+              <div class="col-lg-12">
+                <div id="form-group"> 
+                      <!--Group Title-->
+                
+                 <label class="col-lg-3 control-label">Group name</label>
+                  <div class="col-lg-9">
+          <%= u.text_field :name, autocomplete: 'off',class: 'form-control' %>
+                   </div>
+                 </div>
+                 <div id="form-group"> 
+                      <!--Short name for Group-->
+                
+                 <label class="col-lg-3 control-label">Short name</label>
+                  <div class="col-lg-9">
+          <%= u.text_field :short_name, autocomplete: 'off',class: 'form-control' %>
+                   </div>
+                 </div>
+                               
+   
+                      <!--Campus Select-->
+                 <div id="form-group">                      
+                   <label class="col-lg-3 control-label">Campus</label>
+                     <div class="col-lg-9">
+                        <%= u.collection_select(:campus_id, Campus.all, :id,:name, {prompt: "Select Campus"},{class: "form-control"}) do |b|
+   b.label(class:"btn btn-default category") { b.check_box(class: "hide") + b.text } 
+                        end %>
+                          
+                      </div>
+                        
+                      </div> 
+                       
+                      
+                      <!--Website URL-->                    
+        <div id="form-group">
+                         
+           <label for="url" class="col-lg-3 control-label">Contact Details</label>
+               <div class="col-lg-9 widthLong">
+     <%= u.text_field :contact_name,class: 'form-control',placeholder: 'Name' %>
+   <%= u.text_field :contact_phone,class: 'form-control',placeholder: 'mobile no.' %>
+    <%= u.email_field :email,class: 'form-control',placeholder:'Email Id' %><br>
+                </div>
+         </div> 
+                         
+         <div id="form-group">
+                         
+             <label class="col-lg-3 control-label">Profile Photo</label>
+                 <div class="col-lg-9">
+                        <%= u.file_field :avatar %> <br>
+                  </div>
+          </div>                     
+                      <!--Topic--> 
+          <div id="form-group">
+               <label class="col-lg-3 control-label">Topic</label>
+                       
+                    <div class="col-lg-9">
+  <%= u.collection_check_boxes(:domain_ids, Domain.all, :id, :name) do |b|
+          b.label(class:"btn btn-default category") { b.check_box(class: "hide") + b.text }
+                        end %>
+<%=link_to"Add a new Topic",rails_admin.new_path('Domain'),target:'_blank' %>        
+                        
+                     </div>
+                        
+           </div>
+                     <br>
+           <div id="form-group">
+                <label class="col-lg-3 control-label">Group Description</label>
+                     <div class="col-lg-9">
+                        
+                  <%= u.cktext_area :description,class: 'form-control' %>
+                     </div>
+                      
+           </div> 
+     </div>
+   </div>
+           <div class="col-lg-12 center">
+                      <br>
+                  <div class="col-lg-2 col-lg-offset-3">
+         <%=u.submit 'Create Group', class:'btn btn-primary btn-sm',type: 'submit' %>
+                   </div>
+           <div class="col-lg-2 col-lg-offset-3">
+         <%=u.submit 'Reset', class:'btn btn-danger btn-sm right',type: 'reset' %> 
+           </div>
+        </div>
+                      
+     </div>
+   </div> 
+                      
+                      <!--Attachments-->
+                      
+                      <!--Deadlines-->
+                        
+ </div>                    
+</fieldset>   
+          <% end %>
+                  
+           </div>
+      </div>
+    </div>
+                
+      <script type="text/javascript" language="javascript" charset="utf-8">
+           $("input[id*='group_domain_ids']").each(function(){
+            if($(this).prop('checked')){
+               $(this).parent().removeClass('btn-default');
+               $(this).parent().addClass('btn-info');
+                                }
+                        });                </script>        
+                                           

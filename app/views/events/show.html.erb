@@ -1,0 +1,127 @@
+<title></title>
+<div id="fb-root"></div>
+<% content_for :javascripts do %>
+<script type='text/javascript'>
+    handler = Gmaps.build('Google');
+    /* rest of maps building JS */
+</script>
+<% end %>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=235140026659021";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+           <div class="container">
+                              
+                         <div class="cover">                                               
+                    <legend><h2><%= @event.title %></h2>
+                     <p><a class="label label-primary">Bee Score: <%= @event.shared_by.count%></a>
+                    <% if @user.usershares.include?(@event) %>
+        <%= link_to share_event_path(@event, type: "undo share"), method: :put ,:class => "btn btn-primary btn-xs tour_3" do %><i class="icon icon-share">Un-bee it!</i>
+        <% end %>
+        <% else %>
+       
+        <%= link_to share_event_path(@event, type: "share"), method: :put,:class => "btn btn-primary btn-xs" do %><i class="icon icon-share">Bee it!</i> 
+        <% end %>
+    <% end %>
+    </p>     </legend>
+                    
+                    </div>
+                          <div class="row">
+                          <div class="col-lg-6">
+                          
+                          <div class="thumbnail">
+                            <%if @event.avatar.present?%>
+        <%= image_tag @event.avatar.url, size: "300x200"%>
+        <% else %>
+        <%= image_tag 'logo1.png', size: "300x200"%>
+       <% end %>
+      
+               </div>
+                          </div>
+                          <div class="col-lg-6">
+                          
+                         
+	         <i class="fa fa-calendar"></i> <%=@event.sdatetime.strftime("%B %d,%Y %I:%M %p")%> - <%=@event.edatetime.strftime("%B %d,%Y %I:%M %p")%>
+	         <h4><i class="fa fa-users"></i> <%= @event.organizer %></h4>					
+		<i class="icon icon-map-marker"> </i>
+    <%=@event.venue%>,<%=@event.location%>		
+				
+		<br>
+		<br>	
+			
+                         <i class="fa fa-tags"></i> <% @category.each do |u|%>
+                                 <span class="label label-warning"><%= u.name%></span>
+                                 <% end %> 
+                                 <% @domain.each do |u|%>
+                                 <span class="label label-primary"><%= u.name%></span>
+                                 <% end %> 
+                                 <% @eligible.each do |u|%>
+                                 <span class="label label-primary opac"><%= u.name%></span>
+                                 <% end %> <br><br><br>
+                           <b>Short Description</b>
+                        
+                        <%=@event.short_description %> 
+                        
+                         
+                          </div>
+                          
+                          </div>
+                         
+                          
+                          
+                          <legend>Event Description</legend>
+                          <div class= "row">
+                         <div class="col-lg-8">
+                         
+                           
+                    <%=raw@event.events_description %> 
+                    </div>
+                         <div class="col-lg-4">
+                          
+                          <table class="table ">
+                           <b>EVENT CONTACTS</b>
+                          <tbody>
+                            <tr>
+                            <td>Name:</td><td><%=@event.contact_name%></td>
+                            </tr>
+                            <tr>
+                            <td>mail-to:</td><td><%=@event.email %></td>
+                            </tr>
+                            <tr>
+                            <td>mob:</td><td><%=@event.contact_phone %></td>
+                            </tr>
+              <td>website:</td><td><a href="<%= @event.web %>" target="_blank"><%= @event.web %></a></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                          </div>
+                        <div class="col-lg-5">
+                        
+                        </div>
+                        </div>
+                         
+                     
+                     
+                        
+                  
+                  <% if @user.events.include?(@event)%> 
+                <!% if can? :edit, Event, %>                                     
+                 <%= link_to "Edit Event",edit_event_path, :action=>'edit',:type => 'button',:class => 'btn btn-primary opac'%>  
+                 <!%end%>
+                 <%= link_to "Submit for approval",submit_event_path, :action=>'edit',:type => 'button',method: :put, :class => 'btn btn-primary'%>    <% end %>
+                 <button class="btn btn-warning"><i class="icon-plus icon-white"></i> Add New Event</button>
+                 <div style='width: 800px;'>
+    <div id="geolocation" style='width: 800px; height: 400px;'></div>
+  </div>
+                 <div class="fb-comments" data-href="http://kampusbee.com/comments" data-numposts="5" data-colorscheme="dark"></div>
+                   </div>
+                                       
+                
+                
+               
+                 </div>
+

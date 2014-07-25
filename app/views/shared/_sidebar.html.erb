@@ -1,0 +1,36 @@
+<div class="list-group">
+  <a href="<%= sort_path(:num => 0)%>" class="list-group-item">
+    Today
+  </a>
+  <a href="<%=sort_path(:num => 1)%>" class="list-group-item">Tomorrow
+  </a>
+  <a href="<%=sort_path(:week => 7)%>" class="list-group-item">This Week
+  </a>
+  <a href="<%=sort_path(:month => 7)%>" class="list-group-item">This Month
+  </a>
+ 
+</div>
+<div class="well">
+<legend><div class="tour_8"></div>Filter by Date</legend>
+<%= form_tag sort_path, :method => :get, class:"form-horizontal" do %>
+ <%= select_date(Date.current, {order: [:day, :month, :year]}, {:class=>"form-control"}) %>
+<%=submit_tag ">", class: "btn btn-primary btn-sm"%>
+
+   <% end %>
+
+   </div>
+   <div class="well">
+<legend>Filter by </legend>
+<%= form_tag refresh_path, :method => :get do %>
+<div class="form-group">
+   <%= select("category", "category_id",Category.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Type'},{class: "form-control"}) %>
+   
+   <%= select("domain", "domain_id", Domain.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Topic'},{class: "form-control"}) %>
+   
+   <%= select("eligible", "eligible_id", Eligible.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Eligibility'},{class: "form-control"}) %>
+   
+   <%=submit_tag "Filter", class: "btn btn-primary btn-sm"%>
+   <% end %> 
+   </div>
+   </div>
+</div>

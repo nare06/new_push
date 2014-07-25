@@ -1,0 +1,175 @@
+<title>   </title>  
+  <script>
+    $(window).bind("load", function() {
+       $.getScript('<%= asset_path('social.js') %>', function() {});
+    });
+  </script>                   
+    <!--=========================== Start: MAIN CONTENT ========================================-->
+  <div class="splash">
+    <% if session[:events].present? %>
+      <%= link_to "Continue Submission", new_event_path,:type => 'button',:class => 'btn btn-info'%>        
+    <% end %>
+     <div class="container">   
+      <div class="row">    
+        <h1 class="tour_1 fontedits" >Thousands of events around your campus. </h1>
+        <h4 class="fontedits" > Events that interest you are just a click away!</h4> <br>
+        <h5 class="fontedits">Pick up your interests </h5>
+    <!---<div class="fb-like-box" data-href="http://www.facebook.com/Kampusbeecom" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>-->
+   <%# render partial: "shared/video" %>
+        <%= form_tag refresh_path, :method => :get do %><br>
+        <%= render partial: "static_pages/slider" %><br> <br>     
+        
+        <%=submit_tag "Start exploring",class:"btn btn-primary btn-lg wireframe move fontedits" %>
+        <% end %>    
+      </div><br><br><br> <br>
+    <div class="row">
+     <div class="col-lg-7"> 
+      <ul class="list_style">
+      <li><span class="fa fa-users"></span>Stay notified about latest happenings in and around your campus</li>
+      <li><span class="fa fa-envelope"></span>Create events for free. It's supereasy.</li>
+      <li><span class="fa fa-lock"></span>Follow users/organizers to check out the events they are attending/organizing</li>
+      <li><span class="fa fa-envelope"></span>Push alerts to google calendar and facebook just by a single click! Stay notified!</li>      
+      <li><span class="fa fa-envelope"></span>Subscribe to our newsletter to get to know about latest events catalogue. We don't spam.</li>
+      <li><span class="fa fa-comments"></span>Easy signup using social network logins</li>                      
+      </ul>
+    </div>    
+    <div class="col-lg-5 ">  
+      <div class="well wellopac">
+      <h1 class="fontedits">Start here </h1>
+      <h3>Check out the events happening in your campus</h3>  
+        <%=collection_select nil, :campus_id, Campus.all, :short_name, :name,{:prompt => 'Please select your campus'},{:onchange => "document.location = '/campuses/' + this.value", :class => "form-control"} %><br>
+      <h5>Campus not available? Add here.</h5>
+        <%= form_for @campus do |f| %>
+      <div class="row">
+      <div class="col-lg-8 ">
+        <%= f.text_field :name, :placeholder =>'Submit your campus',class: 'form-control' %>
+        <p>Ex: Indian Institute of Technology Kharagpur, Vellore Institute of Technology</p>
+      </div>
+      <div class="col-lg-4 ">
+        <%= f.text_field :short_name, :placeholder =>'Short name',class: 'form-control' %><br>
+       <p>Ex: IITKGP, VIT</p>
+      </div>
+      </div>     
+        <%= f.submit "Submit", class: "btn btn-sm btn-primary center" %>          
+    <%end%>                                                        
+  </div>
+ </div>
+</div> 
+</div>
+    </div>
+        <!--======================= Center stufff===============-->
+<div class="container">
+	<div class="row">
+
+    	<div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-thumbs-o-up"></i></div>
+					<div class="info">
+						<h3 class="title">Creating events is free</h3>
+						<p>
+						  You can create event pages for any event in no time. It's free and supereasy. 
+						</p>
+						<div>
+						<a class="btn btn-primary btn-md" href="<%=new_event_path%>">Create an Event</a>
+							
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+			
+     <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-flag"></i></div>
+					<div class="info">
+						<h3 class="title">Participate, debate, discuss and share actively</h3>
+    					<p>
+							Earn BeeScores through active discussions, polls, surveys, feedbacks, suggestions etc. Redeem scores to unlock discount vouchers.  
+						</p>
+						<div class="more">
+							<a href="#" title="Title Link">
+								Read more <i class="fa fa-angle-double-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+			
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-users"></i></div>
+					<div class="info">
+						<h3 class="title">Build networks inside your campuses</h3>
+    					<p>
+							Create groups inside your campuses. Build activity. 
+						</p>
+						<div class="more">
+							<a href="#" title="Title Link">
+								Read More <i class="fa fa-angle-double-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>		    
+		
+	</div>
+</div>
+
+    <!-- ==================================================================================== -->
+    <!-- <div class="col-lg-4 col-lg-offset-4">
+            <input type="search" id="container-search" value="" class="form-control" placeholder="Search...">
+        </div>--> 
+        
+  <div class="featurette" id="sec2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>Amazing Features</h1>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2 text-center">
+        <div class="featurette-item">
+          <i class="icon-bell"></i>
+          <h4>Alerts</h4>
+          <p>Setting up social alerts is a piece of cake</p>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="icon-star"></i>
+          <h4>Events</h4>
+          <p>Now creating events is free and super-easy</p>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="fa fa-users"></i>
+          <h4>Network Groups</h4>
+          <p>Follow other users/organisers. Create/Join groups. Have fun!</p>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="icon-pencil"></i>
+          <h4>Interests</h4>
+          <p>Set up your interests. Get notified about latest events as per your preferences.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+<div class="container">
+  <%# render partial: "static_pages/group_slider" %><br>
+  <%# render partial: "shared/group", collection: @campus_groups%>   
+</div>
+    <!-- End: MAIN CONTENT -->
+

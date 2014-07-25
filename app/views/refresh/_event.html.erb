@@ -1,0 +1,126 @@
+<title></title>
+<div class="alert alert-dismissable alert-warning eventspc">
+  <button type="button" class="close" data-dismiss="alert">X</button>
+    <table class ="table table-striped table-hover eventspc" style="table-layout: fixed;">
+      <tbody>
+        <tr>
+    <!-=================================first column===========================================->
+          <td width="9.5%" class="resp">
+            <div class="thumbnail">
+              <div class="caption">
+                <h4><%= event.reach.name if event.reach.present? %></h4>
+                  <p><a class="label label-primary">Bee Score: <%= event.shared_by.count%></a>
+                    <% if @user.usershares.include?(event) %>
+                    <%= link_to share_event_path(event, type: "undo share"), method: :put ,:class => "btn btn-primary btn-xs tour_3" do %>Un-bee it!
+                      <% end %>
+                      <% else %>       
+                    <%= link_to share_event_path(event, type: "share"), method: :put,:class => "btn btn-primary btn-xs" do %><i class="icon icon-share">Bee it!</i> 
+                      <% end %>
+                    <% end %></p>
+                      <a href="https://twitter.com/intent/tweet" class="twitter-share-button" data-lang="en" data-text="<%=event.title %>" data-hashtags="<%=event.organizer%>" data-url="http://kampusbee.com/events/<%=event.id%>" data-count="none"  data-via="<%=event.venue%>,<%= event.location%>">Tweet</a>
+              </div>               
+                <% if event.avatar.present?%>
+                  <%= image_tag event.avatar.url, size: "160x100"%>
+                <% else %>
+                  <%= image_tag 'logo1.png', size: "160x100"%>
+                <% end %>
+            </div>                
+  <p class="tour_4"></p>
+        </td>
+  <!-=========----second column--=============================-------->
+    <td class="event_center" width="30%">   
+      <div style="word-wrap: break-word;">
+        <% if @user.userfavorites.include?(event) %>       
+         <%= link_to favorite_event_path(event, type: "unfavorite"),{ method: :put ,title: "unfavorite"} do %>
+            <i class="icon icon-star" style="color: rgba(0, 0, 0, 0.74);"></i>
+            <% end %>
+        <% else %>
+         <%= link_to favorite_event_path(event, type: "favorite"), {method: :put,title: "favorite"} do %>
+            <i class="icon icon-star-empty" style="color: rgba(0, 0, 0, 0.74);"></i>
+            <% end %>
+         <% end %>
+    
+    <%= link_to event.title,event,class: "event_title" %> <br> 
+    <i class="fa fa-users"></i> 
+     <%=event.organizer%> 
+     <button type="button" class="btn btn-primary btn-xs what" data-container="body" data-toggle="popover" data-placement="top" data-content="<%=event.short_description%>" data-original-title="" title=""><div class="tour_6"><i class="icon icon-eye-open"></i> What!?</div></button>
+    <table class ="table table-striped table-hover eventspc" style="table-layout: fixed;">
+      <tbody>
+  <!-==============---Second column table----==============------>
+        <tr>    
+         <td class="eventrow2"><i class="icon icon-calendar"></i> 
+           <%=event.sdatetime.strftime("%d %b %I:%M %p")%> - <%=event.edatetime.strftime("%d %b %I:%M %p")%></td></tr>
+        <tr><td class="eventrow2"><i class="icon icon-map-marker"> </i>
+            <%=event.venue%>,<%=event.location%>
+        </td></tr>
+    </tbody></table></td>
+    <!-========---Responsive Design Part----======================------>
+    <div class="event_resp">
+      <div style="word-wrap: break-word;">
+         <% if @user.userfavorites.include?(event) %>       
+          <%= link_to favorite_event_path(event, type: "unfavorite"),{ method: :put ,title: "unfavorite"} do %><i class="icon icon-star" style="color: rgba(0, 0, 0, 0.74);"></i><% end %>
+          <% else %>
+          <%= link_to favorite_event_path(event, type: "favorite"), {method: :put,title: "favorite"} do  %><i class="icon icon-star-empty" style="color: rgba(0, 0, 0, 0.74);"></i><% end %>
+         <% end %>    
+          <%= link_to event.title,event,class: "event_title" %> <br> <i class="fa fa-users"></i>  <%=event.organizer%>
+      </div> 
+      <div class="thumbnail">
+        <div class="caption">
+            <h4><i class="icon icon-calendar"> </i> 
+            <%=event.sdatetime.strftime("%d %b %I:%M %p")%> - <%=event.edatetime.strftime("%d %b %I:%M %p")%></h4>
+            <h4> <i class="icon icon-map-marker"> </i><%=event.venue%>,<%=event.campus.name%></h4>
+                <p><a class="label label-primary">Bee Score: <%= event.shared_by.count%></a>
+                   <% if @user.usershares.include?(event) %>
+              <%= link_to share_event_path(event, type: "undo share"), method: :put ,:class => "btn btn-primary btn-xs tour_3" do %>
+             <i class="icon icon-share">Un-bee it!</i>
+           <% end %>
+        <% else %>
+          <%= link_to share_event_path(event, type: "share"), method: :put,:class => "btn btn-primary btn-xs" do %>
+           <i class="icon icon-share">Bee it!</i> 
+        <% end %>
+    <% end %>  
+    <button type="button" class="btn btn-primary btn-xs" data-container="body" data-toggle="popover" data-placement="top" data-content="<%=event.short_description%>" data-original-title="" title=""><div class="tour_6"><i class="icon icon-eye-open"></i> What!?</div></button>
+    <a href="https://twitter.com/intent/tweet" class="twitter-share-button" data-lang="en" data-text="<%=event.title %>" data-hashtags="<%=event.organizer%>" data-url="http://kampusbee.com/events/<%=event.id%>" data-count="none"  data-via="<%=event.venue%>,<%= event.location%>" >Tweet</a>         
+        </p>
+          
+    </div>
+                              
+    <%if event.avatar.present?%>
+       <%= image_tag event.avatar.url, size: "160x100"%>
+    <% else %>
+       <%= image_tag 'logo1.png', size: "160x100"%>
+     <% end %>
+
+   </div>
+           <!-==================- <p>Resposive design ends</p>=======================->
+           <!-==============---Third column----==============------> 
+  <td class = "aRi" width="20%">          
+    <div class="aU5"><span class="aRh"><%=event.sdatetime.strftime("%b") %></span><span class="aRg"><%=event.sdatetime.day %></span><span class="aRj"><%=event.sdatetime.strftime("%a") %></span></div>
+      <div class="tour_5"> 
+        <div class="thumbnail">       
+          <a href="#" class=" btn btn-primary btn-sm" >
+            <i class="fa fa-bell-o"> <span class="res">Alerts!</span></i></a>
+            <div class="caption">
+              <% @push = SetAlert.where(:user_id => @user.id, :event_id => event.id).first_or_initialize %>
+              <% if @push.gcpush_id.present? %>
+                <%= link_to @push.gcpush_htmllink, class:"btn btn-social-icon btn-xs btn-google-plus" do %> <i class="fa fa-pencil"> </i><% end%>
+                <%= link_to del_google_calendar_alert_path(:id => event.id),method: :delete, data: {confirm: 'Are you sure?'},class:"btn btn-social-icon btn-xs btn-google-plus" do %><i class="fa fa-google-plus"> </i><% end%>
+                <% else %> 
+                <%= link_to set_google_calendar_alert_path(:id => event.id), class:"btn btn-social-icon btn-xs btn-google-plus" do %><i class="fa fa-google-plus"></i><% end%>
+              <% end%>
+         
+              <% if @push.fbpush_id.present? %>
+                <%= link_to del_fb_alert_path(:id => event.id), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-social-icon btn-xs btn-facebook" do %>Delete alert <i class="fa fa-facebook"></i><% end%>
+                <% else %>
+                <%= link_to set_fb_alert_path(:id => event.id), class:"btn btn-social-icon btn-xs btn-facebook" do %> <i class="fa fa-facebook"></i><% end%>
+              <% end%>
+    </div>
+  </div>                                       
+</div>
+</td> 
+  <!-=================ends======================---------->               
+</tr>          
+</tbody>
+</table>                 
+</div>
+           

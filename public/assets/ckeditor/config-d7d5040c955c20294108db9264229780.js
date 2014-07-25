@@ -1,0 +1,1 @@
+"undefined"!=typeof CKEDITOR?CKEDITOR.editorConfig=function(o){o.uiColor="#AADC6E",o.toolbar=[["Bold","Italic","Underline","Strike"],["NumberedList","BulletedList","HorizontalRule"],["Blockquote"],["Undo","Redo"],["insertResolved"],["Source"]]}:console.log("ckeditor not loaded");

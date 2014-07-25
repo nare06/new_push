@@ -1,0 +1,34 @@
+    <div class='col-md-12'>
+      <div class="carousel slide media-carousel" id="media">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row">
+              <%# render partial: "box", collection: @categories.limit(12) %>                  
+            <%= collection_check_boxes(nil,:category_ids, Category.all.limit(10).to_a, :id, :name) do |b|
+                b.label(class: "label_box",style:"background: url(
+            #{Category.find(b.value).image_url}) ;width: 17%; height: 100px;"){ b.check_box(class: "hide") + b.text}
+                        end %>                          
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="row">
+            <%= collection_check_boxes(nil,:category_ids, Category.all.offset(10).to_a, :id, :name) do |b|
+                b.label(class: "label_box",style:"background: url(
+            #{Category.find(b.value).image_url}) ;width: 17%; height: 100px;"){ b.check_box(class: "hide") + b.text}
+                        end %>    <%# render partial: "box", collection: @categories.offset(12) %>        
+            </div>
+          </div>
+          <div class="item">
+            <div class="row">
+              <%= collection_check_boxes(nil,:category_ids, Category.all.offset(20).to_a, :id, :name) do |b|
+                  b.label(class: "label_box",style:"background: url(
+            #{Category.find(b.value).image_url}) ;width: 17%; height: 100px;"){ b.check_box(class: "hide") + b.text}
+                        end %>  
+            </div>
+          </div>
+        </div>
+        <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#media" class="right carousel-control">›</a>
+      </div>                          
+    </div>

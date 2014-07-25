@@ -1,0 +1,97 @@
+ <div class="splash">
+<h1 class="fontedits"><%= @campus.name %></h1>
+</div>
+ <div class="container extend"> 
+    <div class="row"> 
+ 
+      <!-- End: slider -->
+      <!-- Pictures: begin -->
+      
+<!-- Pictures: End -->
+      <!-- Start: Tab Begins --> 
+  <div class="col-lg-2" role="navigation"> 
+<h2 class="tour_2" id="nav-tabs"></h2>
+ <ul class="nav nav-tabs nav-stacked">
+ <% if signed_in? %>
+<li class="active"><a href="#all" data-toggle="tab">All Events<span class="badge"><%=@events.count%></span></a></li>
+<li><a href="#first" data-toggle="tab"><%=@reach.first.name.pluralize%><span class="badge"><%=@event_reach1.count%></span></a></li>
+<li><a href="#second" data-toggle="tab"><%=@reach.last.name.pluralize%><span class="badge"><%=@event_reach2.count%></span></a></li>
+<li><a href="#third" data-toggle="tab">My Events<span class="badge"><%=@myevents.count%></span></a></li>
+<li><a href="#fourth" data-toggle="tab">My favorites<span class="badge"><%=@favorites.count%></span></a></li>
+<li><a href="#fifth" data-toggle="tab">Trending<span class="badge"><%=@trending.count%></span></a></li>
+<li><a href="#sixth" data-toggle="tab">Attending<span class="badge"><%=@attending.count%></span></a></li>
+<li><a href="#seventh" data-toggle="tab">Created Events<span class="badge"><%=@tab7.count%></span></a></li>
+<% else %>
+<li class="active"><a href="#all" data-toggle="tab">All Events<span class="badge"><%=@events.count%></span></a></li>
+<li><a href="#first" data-toggle="tab"><%=@reach.first.name.pluralize%><span class="badge"><%=@event_reach1.count%></span></a></li>
+<li><a href="#second" data-toggle="tab"><%=@reach.last.name.pluralize%><span class="badge"><%=@event_reach2.count%></span></a></li>
+<li><a href="#fifth" data-toggle="tab">Trending<span class="badge"><%=@trending.count%></span></a></li>
+<% end %>
+</ul>
+
+<!---------================================--Side Bar: Start---=========================----------------->
+ 
+    <br>
+  <%= render partial: "shared/sidebar" %>
+    
+<!---------================================--Side Bar: End---=========================----------------->
+<!---------================================--Tab Contents: Start---=========================------------>
+    <div class="col-lg-8">
+ <div id="myTabContent" class="tab-content eventstr">
+<% if signed_in? %>
+<div class="tab-pane fade active in" id="all">
+<%= render partial: "static_pages/event", collection: @events %>
+</div>
+<div class="tab-pane fade" id="first">
+<%= render partial: "static_pages/event", collection: @event_reach1 %> 
+</div>
+<div class="tab-pane fade" id="second">
+<%= render partial: "static_pages/event", collection: @event_reach2%>        
+</div>
+<div class="tab-pane fade" id="third">
+<%= render partial: "static_pages/event", collection: @myevents %>        
+</div>
+<div class="tab-pane fade" id="fourth">
+<%= render partial: "static_pages/event", collection: @favorites %>        
+</div>
+<div class="tab-pane fade" id="fifth">
+<%= render partial: "static_pages/event", collection: @trending %>        
+</div>
+<div class="tab-pane fade" id="sixth">
+<%= render partial: "static_pages/event", collection: @tab6 %>        
+</div>
+<div class="tab-pane fade" id="seventh">
+<%= render partial: "static_pages/event", collection: @tab7 %>        
+</div>
+<%else%>
+<div class="tab-pane fade active in" id="all">
+<%= render partial: "static_pages/event", collection: @events %>
+</div>
+<div class="tab-pane fade" id="first">
+<%= render partial: "static_pages/event", collection: @event_reach1 %>        
+</div>
+<div class="tab-pane fade" id="second">
+<%= render partial: "static_pages/event", collection: @event_reach2 %>        
+</div>
+<div class="tab-pane fade" id="fifth">
+<%= render partial: "static_pages/event", collection: @trending %>        
+</div>
+<%end%>
+</div>
+</div>
+<div class="col-lg-2">
+    <%= render partial: "shared/group", collection: @campus_groups %>   
+    <div id="surveyMonkeyInfo"><div><script src="http://www.surveymonkey.com/jsEmbed.aspx?sm=j441FVMJKYRb5qebMx3_2frg_3d_3d"> </script></div>Create your free online surveys with <a href="https://www.surveymonkey.com">SurveyMonkey</a> , the world's leading questionnaire tool.</div>
+</div>      
+</div>
+</div>
+</div>
+<%= render partial: "static_pages/tour" %>
+ 
+<!---------================================--Tab Contents: End---=========================------------>
+<script type="text/javascript" language="javascript" charset="utf-8">
+var created_at = <%= Time.now.to_i %>;
+window.setInterval(function(){
+  $.get('<%= new_events_path %>', {created_at: created_at});
+}, 1000000);
+</script> 
