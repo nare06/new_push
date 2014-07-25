@@ -12,9 +12,11 @@ include Elasticsearch::Model
 #----------------------Namescopes----------------------------#
   scope :approved, lambda{ where(:workflow_state => "accept")}
     scope :rejected, lambda{ where(:workflow_state => "reject")}
+      #scope :new_events, lambda{ where.not(:workflow_state => "accept" or :workflow_state => "reject")}
       scope :latest, lambda{ order("events.updated_at DESC")}
         scope :search, lambda{|query| where(["lower(title) LIKE ?", "%#{query.downcase}%"])}
          scope :upcoming, lambda{ where("edatetime > ?", Time.now)}
+          scope :expired, lambda{where("edatetime < ?", Time.now)}
 
 #----------------------Validations----------------------------#
 validates :title, :presence => true, length: {maximum: 50}
