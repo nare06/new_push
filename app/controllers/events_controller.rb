@@ -15,7 +15,7 @@ before_action :authenticate_user!, except: [:new, :show, :index ]  #:only: [:new
   # GET /events.json
   def index
   @user = current_user || User.new
-    @events = Event.approved
+    @events = Event.approved.latest.upcoming
     @events = @events.paginate :page => params[:page], :per_page => 10
       respond_to do |format|
         format.html

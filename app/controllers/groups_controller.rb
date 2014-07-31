@@ -2,20 +2,25 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 def index
   @campus = Campus.friendly.find(params[:campus_id])
-  @events = Event.all    # in campus
-   @groups = Group.all    # in campus
+  @events = @campus.events    # in campus
+   @groups = @campus.groups    # in campus
 end
 def show
  @campus = Campus.friendly.find(params[:campus_id])
-  @group = Group.friendly.find(params[:id])
-  @events = @group.events
-   @user = current_user || User.new
+  @user = current_user || User.new
+  if @campus.groups.include? (Group.friendly.find(params[:id])) 
+      @group = Group.friendly.find(params[:id]) 
+      @events = @group.events
+  else
+    redirect_to campus_path(id: params[:campus_id]), notice: "No such page available"
+  end
+   
 end
 def new
 
-#@campus= Campus.friendly.find(params[:campus_id])
+  @campus= Campus.friendly.find(params[:campus_id])
   @group = Group.new
-#@group.campus_id = @campus.id
+  @group.campus_id = @campus.id if @campus
 end
 def edit
 end
@@ -64,6 +69,6 @@ def create
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:name, :slug, :description, :short_name, 
-      :campus,:contact_name, :contact_phone, :email, :domain_ids => [])
+      :campus_id,:contact_name, :contact_phone, :email, :domain_ids => [])
     end
 end

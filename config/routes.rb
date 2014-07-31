@@ -19,7 +19,7 @@ NkV1::Application.routes.draw do
  match '/search', to:'refresh#search', via:'get' 
  match '/myevents', to:'refresh#myevents', via:'get'
  match '/hall', to:'refresh#hallevents', via:'get'
- match '/campus', to:'refresh#campusevents', via:'get'
+ match '/all_campus', to:'refresh#campusevents', via:'get'
  match '/approvals', to:'admin#index', via:'get' 
  match '/approve', to:'admin#update', via:'get'                        
  get "users/preferences"
@@ -31,9 +31,9 @@ NkV1::Application.routes.draw do
             put :submit, on: :member
    end
    
-   resources :groups, except: [:show, :index]
+   #resources :groups, except: [:show, :index]
    resources :campuses do
-       resources :groups, only: [:show, :index]      
+       resources :groups#, only: [:show, :index]      
    end
    resources :users do
      member do

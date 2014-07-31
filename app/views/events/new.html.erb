@@ -63,7 +63,7 @@
                          
             <label class="col-lg-3 control-label">Campus</label>
                         <div class="col-lg-9">
-                        <%= u.collection_select(:campus_id, Campus.all, :id,:name, {prompt: "Select a category"},{class: "form-control"}) do |b|
+                        <%= u.collection_select(:campus_id, Campus.all, :id,:name, {prompt: "Select your campus"},{class: "form-control"}) do |b|
                           b.label(class:"btn btn-default category") { b.check_box(class: "hide") + b.text } end %>  
                           
                         </div>

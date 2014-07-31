@@ -2,6 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
+  $("input[id*='domain_ids']").click ->
+    if $(@).prop('checked')
+      $(@).parent().removeClass('label_box')
+      $(@).parent().addClass('label_add')
+    else
+      $(@).parent().removeClass('label_add')
+      $(@).parent().addClass('label_box')
+jQuery ->
   $("input[id*='category_ids']").click ->
     if $(@).prop('checked')
       $(@).parent().removeClass('label_box')

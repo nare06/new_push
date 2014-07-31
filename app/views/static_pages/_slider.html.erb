@@ -1,29 +1,29 @@
     <div class='col-md-12'>
-      <div class="carousel slide media-carousel" id="media">
+      <div class="carousel slide media-carousel slide_edit" id="media">
         <div class="carousel-inner">
           <div class="item active">
             <div class="row">
               <%# render partial: "box", collection: @categories.limit(12) %>                  
-            <%= collection_check_boxes(nil,:category_ids, Category.all.limit(10).to_a, :id, :name) do |b|
+            <%= collection_check_boxes(nil,:category_ids, Category.all.limit(12).to_a, :id, :name) do |b|
                 b.label(class: "label_box",style:"background: url(
-            #{Category.find(b.value).image_url}) ;width: 17%; height: 100px;"){ b.check_box(class: "hide") + b.text}
+            #{Category.find(b.value).image_url}) ;width: 15%; height: 120px;"){ b.check_box(class: "hide") + b.text}
                         end %>                          
             </div>
           </div>
 
           <div class="item">
             <div class="row">
-            <%= collection_check_boxes(nil,:category_ids, Category.all.offset(10).to_a, :id, :name) do |b|
+            <%= collection_check_boxes(nil,:category_ids, Category.all.offset(12).to_a, :id, :name) do |b|
                 b.label(class: "label_box",style:"background: url(
-            #{Category.find(b.value).image_url}) ;width: 17%; height: 100px;"){ b.check_box(class: "hide") + b.text}
+            #{Category.find(b.value).image_url}) ;width: 15%; height: 120px;"){ b.check_box(class: "hide") + b.text}
                         end %>    <%# render partial: "box", collection: @categories.offset(12) %>        
             </div>
           </div>
           <div class="item">
             <div class="row">
-              <%= collection_check_boxes(nil,:category_ids, Category.all.offset(20).to_a, :id, :name) do |b|
+              <%= collection_check_boxes(nil,:domain_ids, Domain.all.limit(12).to_a, :id, :name) do |b|
                   b.label(class: "label_box",style:"background: url(
-            #{Category.find(b.value).image_url}) ;width: 17%; height: 100px;"){ b.check_box(class: "hide") + b.text}
+            #{Domain.find(b.value).image_url}) ;width: 15%; height: 120px;"){ b.check_box(class: "hide") + b.text}
                         end %>  
             </div>
           </div>

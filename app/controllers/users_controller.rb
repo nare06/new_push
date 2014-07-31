@@ -22,8 +22,6 @@ def new
   end
 def create
     @user = User.new(user_params)
-    @user.role = "user"
-
     if @user.save
       #session[:user_id]= @user.id
       sign_in @user
@@ -39,7 +37,7 @@ def edit
 @auth = @user.authorizations
 end
 def update
- # @user = User.friendly.find(params[:id])
+ # @user = User.friendly.find(params[:id])New-Bee
   if @user.update(params[:user])
       flash[:success] = "Profile Updated"
       sign_in @user
@@ -70,7 +68,7 @@ private
       params.require(:user).permit(:name, :email, :password,
        :password_confirmation, :category_ids, :domain_ids, 
        :eligible_ids,:event_ids, :favorites, :shares,:avatar,
-                 :roles,:aboutme,:role, :slug, :campus_id)
+                 :role_id,:aboutme,:role, :slug, :campus_id)
     end
     def set_user
       @user = User.friendly.find(params[:id])

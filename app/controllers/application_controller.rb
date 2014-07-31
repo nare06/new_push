@@ -19,5 +19,7 @@ before_filter :update_sanitized_params, if: :devise_controller?
 def update_sanitized_params
   devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:name, :email, :password, :password_confirmation,:role,:campus)}
 end
-
+def after_sign_in_path_for(user)
+    users_preferences_path
+end
 end

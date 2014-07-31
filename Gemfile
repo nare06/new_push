@@ -6,6 +6,7 @@ gem 'rails', '4.0.2'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem "therubyracer"
 gem "less-rails"
+gem "thin"
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'jquery-turbolinks'

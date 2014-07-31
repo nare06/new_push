@@ -2,7 +2,7 @@
 
 <div class="container">
    <div class="well">        				
-    <%= form_for @group,:html => {:novalidate =>'novalidate'} do |u| %>
+    <%= form_for [@campus,@group],:html => {:novalidate =>'novalidate'} do |u| %>
       <fieldset>                
          <legend><h3>About the group</h3>
          </legend>
@@ -33,9 +33,7 @@
                  <div id="form-group">                      
                    <label class="col-lg-3 control-label">Campus</label>
                      <div class="col-lg-9">
-                        <%= u.collection_select(:campus_id, Campus.all, :id,:name, {prompt: "Select Campus"},{class: "form-control"}) do |b|
-   b.label(class:"btn btn-default category") { b.check_box(class: "hide") + b.text } 
-                        end %>
+                        <%= u.collection_select(:campus_id, Campus.all, :id,:name, {prompt: "Select Campus"},{class: "form-control"})%>
                           
                       </div>
                         
@@ -95,12 +93,7 @@
         </div>
                       
      </div>
-   </div> 
-                      
-                      <!--Attachments-->
-                      
-                      <!--Deadlines-->
-                        
+   </div>                    
  </div>                    
 </fieldset>   
           <% end %>

@@ -40,7 +40,7 @@
                         <li><a href="<%= new_event_path %>">Add Events</a></li>
                         <li><a href="<%= myevents_path %>">My Events</a></li>
                         <li><a href="<%= hall_path %>">Hall Events</a></li>
-                        <li><a href="<%= campus_path %>">Campus Events</a></li>
+                        <li><a href="<%= all_campus_path %>">Campus Events</a></li>
                         <li><a href="<%= events_path%>">All Events</a></li>
                         <li class="divider"></li>
              
@@ -49,7 +49,7 @@
                     </li>
                     <!--
                     <li><a href="<%= faq_path %>">FAQ</a></li>
-                    <li><a href="<%= contact_path %>">Contact Us</a></li>----->
+                    <li><a href="<%= contact_path %>">Contact Us</a></li>-->
                   <% if user_signed_in? %>
  
               <% if current_user.has_role? :superadmin %>
@@ -77,24 +77,13 @@
                 </ul>
                 </li>
           <% end %>
-              <div class="navbar-form navbar-right">
-  <%= form_tag search_path, :method => :get do %>
-        
-           
-                <%= text_field_tag :search, nil, placeholder: 'Search',class:"form-control col-lg-8" %>
-               
-                              
-                 
-             
-        
-   <% end %> 
- </div>    
-                  
-                  
+      <div class="navbar-form navbar-right">
+      <%= form_tag search_path, :method => :get do %>                   
+      <%= text_field_tag :search, nil, placeholder: 'Search',class:"form-control col-lg-8" %> 
+        <% end %> 
+          </div>                                        
             </div>
-            </div>
-                    
-      <!-- End: Navigation wrapper -->   
+            </div>                    
     </header>
     
     <!-- End: HEADER -->

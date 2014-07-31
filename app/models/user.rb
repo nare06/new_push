@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :category_ids,
                  :domain_ids, :eligible_ids,:event_ids, :favorites, :shares,:avatar,
-                 :roles,:aboutme,:role, :slug, :campus_id, :group_id
+                 :role_id,:aboutme,:role, :slug, :campus_id, :group_id
                  
   friendly_id :name, use: :slugged 
   validates_presence_of :email
-  validates :name, :presence => true
+  #validates :name, :presence => true
   has_many :microposts, :dependent => :destroy
   has_many :relationships, :foreign_key => "follower_id",
                          :dependent => :destroy

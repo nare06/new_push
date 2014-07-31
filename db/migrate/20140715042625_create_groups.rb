@@ -5,7 +5,11 @@ class CreateGroups < ActiveRecord::Migration
       t.string :slug
       t.text :description
       t.string :short_name
-      t.belongs_to :campus, index: true      
+      t.string :contact_name
+      t.string :contact_phone
+      t.string :email
+      t.belongs_to :campus, index: true   
+
     end
   end
 end

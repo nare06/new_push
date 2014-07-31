@@ -1,14 +1,24 @@
 class RefreshController < ApplicationController
 before_action :authenticate_user!, only: :myevents
 def index
-@cat = Category.find(params[:category][:category_id]) if params[:category][:category_id].present?
-  @dom = Domain.find(params[:domain][:domain_id]) if params[:domain][:domain_id].present?
-  @eli = Eligible.find(params[:eligible][:eligible_id]) if params[:eligible][:eligible_id].present?
-  ids = [@cat, @dom, @eli].reject(&:blank?).collect(&:event_ids).flatten
-  sorted_ids = ids.sort_by{|id| ids.select{|id2| id2 == id}.size}.reverse.uniq
-  records = Event.find(sorted_ids).group_by(&:id)
-  @all = sorted_ids.map { |id| records[id].first }
-  @user = current_user || User.new  
+    @cat = []
+    @dom = []
+    @eli = []
+    @cat = [params[:category_ids]].flatten.reject(&:blank?) if params[:category_ids]
+    @dom = [params[:domain_ids]].flatten.reject(&:blank?)   if params[:domain_ids]
+    @eli = [params[:eligible_ids]].flatten.reject(&:blank?) if params[:eligible_ids]
+    @cat_items= Category.find(@cat)
+    @dom_items= Domain.find(@dom)
+    @eli_items= Eligible.find(@eli)
+    ids =[@cat_items, @dom_items, @eli_items].flatten.reject(&:blank?).collect(&:event_ids).flatten 
+#@cat = Category.find(params[:category][:category_id]) if params[:category][:category_id].present?
+ # @dom = Domain.find(params[:domain][:domain_id]) if params[:domain][:domain_id].present?
+ # @eli = Eligible.find(params[:eligible][:eligible_id]) if params[:eligible][:eligible_id].present?
+  #ids = [@cat, @dom, @eli].reject(&:blank?).collect(&:event_ids).flatten
+    sorted_ids = ids.sort_by{|id| ids.select{|id2| id2 == id}.size}.reverse.uniq
+    records = Event.find(sorted_ids).group_by(&:id)
+    @all = sorted_ids.map { |id| records[id].first }
+    @user = current_user || User.new  
 
 #@event_ids || @events.collect{|p| p.id}
 #@event_ids = id_array.collect{|id| id.to_i}
@@ -36,15 +46,18 @@ if date.present?
 end
 
 def myevents
-@user = current_user || User.new
-    @cat_array  = @user.categories #.collect{|p| p.id}
-    @dom_array   = @user.domains
-    @eli_array  = @user.eligibles
+    @user = current_user || User.new
+    @cat_array  = [@user].collect(&:category_ids).flatten
+    @dom_array   = [@user].collect(&:domain_ids).flatten
+    @eli_array  = [@user].collect(&:eligible_ids).flatten
     
     @categor =[]
     @domai = []
     @eligibl = []
-         
+    @cat = [Category.find(@cat_array)].flatten.collect(&:event_ids)
+    @dom = [Domain.find(@dom_array)].flatten.collect(&:event_ids)
+    @eli = [Eligible.find(@eli_array)].flatten.collect(&:event_ids)
+=begin
     @cat_array.each do |u|    
             @ca = Category.find(u.id)
             @categor = @categor << @ca.events.collect{|p| p.id}       
@@ -61,8 +74,9 @@ def myevents
             @eligibl = @eligibl << @el.events.collect{|p| p.id}
               end
          @events_array = @categor.flatten << @eligibl.flatten << @domai.flatten
-         ids = @events_array.flatten
-         sorted_ids = ids.sort_by{|id| ids.select{|id2| id2 == id}.size}.reverse.uniq
+=end
+    ids = [@cat, @dom, @eli].flatten         
+    sorted_ids = ids.sort_by{|id| ids.select{|id2| id2 == id}.size}.reverse.uniq
          records = Event.find(sorted_ids).group_by(&:id)
          @all = sorted_ids.map { |id| records[id].first }
     render "index"
