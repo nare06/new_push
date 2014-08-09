@@ -34,6 +34,8 @@ set :pty, true
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+#set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.1.0'
 
 namespace :deploy do
 
