@@ -51,6 +51,7 @@ group :development, :test do
   gem 'faker', '0.3.1'
   gem 'debugger'
   gem 'letter_opener_web', '~> 1.1.0'
+  gem 'capistrano', '~> 3.2.0'
 end
 
 group :test do
@@ -79,4 +80,4 @@ end
 
 gem 'open4'
 #gem 'rubber', '~> 2.7.4'
-gem 'capistrano', '~> 3.2.0'
+

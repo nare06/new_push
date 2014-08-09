@@ -1,14 +1,14 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'kampusbee'
-set :repo_url, 'git@github.com:nare06/new_push.git'
+set :repo_url, 'git://github.com/nare06/new_push.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-
+set :user, "ubuntu"
 # Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+ set :deploy_to, "/var/www/kampusbee"
+ set :deploy_via, :copy
 
 # Default value for :scm is :git
 set :scm, :git
@@ -37,20 +37,21 @@ set :pty, true
 
 namespace :deploy do
 
-  desc 'Restart application'
+   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      run "touch #{current_path}/tmp/restart.txt"
-    end  
+       execute :touch, release_path.join('tmp/restart.txt')
+    end
   end
+
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
     run "ln -nfs #{shared_path}/tmp/restart.txt #{release_path}/tmp/restart.txt"
   end
-end
-  #after :publishing, :restart
-  after 'deploy:update_code', 'deploy:symlink_shared'
+
+  after :publishing, :symlink_shared
+ # after 'deploy:update_code', 'deploy:symlink_shared'
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -59,5 +60,4 @@ end
       # end
     end
   end
-
-end
+  end

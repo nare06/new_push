@@ -22,5 +22,5 @@ production:
   encoding: unicode
   database: nk_v1_production
   pool: 5
-  username: postgres
-  password: harry
+  username: ubuntu
+  password: 

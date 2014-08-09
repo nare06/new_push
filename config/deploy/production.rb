@@ -18,7 +18,7 @@ role :db,  %w{ec2-54-254-216-93.ap-southeast-1.compute.amazonaws.com}, :primary 
 server 'ec2-54-254-216-93.ap-southeast-1.compute.amazonaws.com', user: 'ubuntu', roles: %w{web app db} #my_property: :my_value
 #set :user, "ubuntu"
 #server "ec2-54-254-216-93.ap-southeast-1.compute.amazonaws.com", :app, :web, :db, :primary => true
-ssh_options[:keys] = ["~/.ec2/gsg-keypair"]
+#ssh_options[:keys] = ["~/.ec2/gsg-keypair"]
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
@@ -26,11 +26,11 @@ ssh_options[:keys] = ["~/.ec2/gsg-keypair"]
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
+  set :ssh_options, {
+    keys: %w(/home/naveen/.ec2/gsg-keypair),
+    forward_agent: false
 #    auth_methods: %w(password)
-#  }
+  }
 #
 # And/or per server (overrides global)
 # ------------------------------------
