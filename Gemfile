@@ -78,5 +78,5 @@ group :production do
 end
 
 gem 'open4'
-gem 'rubber', '~> 2.7.4'
-
+#gem 'rubber', '~> 2.7.4'
+gem 'capistrano', '~> 3.2.0'

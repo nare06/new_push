@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   has_many :usershares, through: :shares, source: :event
   has_many :userfollowfeeds, through: :followfeeds, source: :event
 #ends here
-  belongs_to :campus
+  belongs_to :campus, touch: true
   #has_many :assignments
   #has_many :roles  #, :through => :assignments
 def has_role?(role_sym)

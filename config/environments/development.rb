@@ -15,7 +15,7 @@ config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   config.action_controller.action_on_unpermitted_parameters = :raise 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+  config.action_controller.perform_caching = true
   config.reload_classes_only_on_change = false
 
   # Don't care if the mailer can't send.

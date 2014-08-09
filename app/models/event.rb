@@ -7,14 +7,15 @@ include Elasticsearch::Model
                   :contact_phone, :email,:short_description,:events_description,
                   :venue, :user_id, :avatar,:category_ids,:domain_ids, 
                   :eligible_ids,:favorites, :shares, :web, :reach_id,
-                  :workflow_state, :slug, :campus_id, :group
+                  :workflow_state, :slug, :campus_id, :group_id
   friendly_id :title, use: :slugged                               
 #----------------------Namescopes----------------------------#
   scope :approved, lambda{ where(:workflow_state => "accept")}
     scope :rejected, lambda{ where(:workflow_state => "reject")}
       #scope :new_events, lambda{ where.not(:workflow_state => "accept" or :workflow_state => "reject")}
       scope :latest, lambda{ order("events.updated_at DESC")}
-        scope :search, lambda{|query| where(["lower(title) LIKE ?", "%#{query.downcase}%"])}
+        scope :search, lambda{|query| where(["lower(title) LIKE ? or lower(venue) LIKE ? or lower(organizer) LIKE ?",
+                    "%#{query.downcase}%","%#{query.downcase}%","%#{query.downcase}%"])}
          scope :upcoming, lambda{ where("edatetime > ?", Time.now)}
           scope :expired, lambda{where("edatetime < ?", Time.now)}
 
@@ -53,10 +54,10 @@ has_and_belongs_to_many :eligibles
 has_many :favorited_by, through: :favorites, source: :user
 has_many :shared_by, through: :shares, source: :user
 has_many :followfeeds_by, through: :followfeeds, source: :user
-belongs_to :user
-belongs_to :reach
-belongs_to :campus
-belongs_to :group
+belongs_to :user, touch: true
+belongs_to :reach, touch: true
+belongs_to :campus, touch: true
+belongs_to :group, touch: true
 #----------------------End----------------------------#
 include Workflow
   workflow do

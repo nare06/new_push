@@ -7,4 +7,5 @@ class Campus < ActiveRecord::Base
 	has_many :events
 	has_many :users
  	has_many :groups
+    scope :search, lambda{|query| where(["lower(name) LIKE ? ","%#{query.downcase}%"])}
 end

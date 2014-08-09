@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  
   def home
   
   @campus = Campus.new

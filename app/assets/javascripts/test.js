@@ -16,6 +16,24 @@
     lang: 'en',
     minDate: '-1970/01/01'});
   });
+   $(document).ready(function() {
+    $('#event_startdatesearch').datetimepicker({
+    step:5,
+    format:'d/m/Y',
+    //formatTime:'g:i A',
+    timepicker: false,
+    lang: 'en',
+    minDate: '-1970/01/01'});
+  });
+   $(document).ready(function() {
+    $('#event_enddatesearch').datetimepicker({
+    step:5,
+    format:'d/m/Y',
+    //formatTime:'g:i A',
+    timepicker: false,
+    lang: 'en',
+    minDate: '-1970/01/01'});
+  });
   $(document).ready(function () {
     $( '#table' ).searchable({
         striped: true,
