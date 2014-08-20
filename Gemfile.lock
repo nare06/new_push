@@ -55,7 +55,7 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.1.1.0)
+    bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.6)
       will_paginate
@@ -431,7 +431,7 @@ DEPENDENCIES
   activerecord-session_store!
   aws-sdk
   bcrypt-ruby (= 3.1.2)
-  bootstrap-sass (~> 3.1.1)
+  bootstrap-sass (~> 3.2.0)
   bootstrap-will_paginate (= 0.0.6)
   cancancan (~> 1.7)
   capistrano (~> 3.2.0)

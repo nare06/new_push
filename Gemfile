@@ -3,7 +3,7 @@ ruby '2.1.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem "therubyracer"
 gem "less-rails"
 gem "thin"
