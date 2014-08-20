@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Kampusbee.com - Campus Events">
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Counter - Coming Soon Theme</title>
+    <title>Kampusbee.com - Campus Events</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -46,15 +46,24 @@
                 <div id="seconds" class="timer_box"></div>
             </div>
             <!-- END TIMER -->
+
             <div class="col-lg-4 col-lg-offset-4 mt centered">
             	<h4>LET ME KNOW WHEN YOU LAUNCH</h4>
-				<form class="form-inline" role="form">
+        <%= form_for @user,:html => {:class =>"form-inline"} do |f| %>
+               <%# render 'shared/error_messages', :object => f.object %>
 				  <div class="form-group">
+
 				    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+				    <%= f.text_field :email, :placeholder =>'Enter email', class: "form-control" %>
+            <%= f.hidden_field :password, :placeholder =>'Password', value: "111111"%>
+      <%= f.hidden_field :password_confirmation, :placeholder =>'Confirmation', value: "111111" %>
+      <%= f.hidden_field :role,class: 'form-control', value: "user", readonly: "readonly" %><br>
 				  </div>
-				  <button type="submit" class="btn btn-info">Submit</button>
-				</form>            
+          <%= f.submit "Submit", class: "btn btn-info" %>
+				<% end %>
+        <h4>Send us events happening in your campus. It's supereasy</h4>
+        <%=link_to "Submit an Event",new_event_path, class:"btn btn-info" %>          
+        <h4>We are testing out the product in few colleges. Will reach out to all campuses soon. Submit your campus info <%=link_to "here",new_campus_path %>   </h4>
 			</div>
             
         </div>
@@ -91,6 +100,16 @@
     <script src="assets/js/soon/plugins.js"></script>
     <script src="assets/js/soon/jquery.themepunch.revolution.min.js"></script>
     <script src="assets/js/soon/custom.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49270049-1', 'kampusbee.com');
+  ga('send', 'pageview');
+
+</script>
   </body>
   <!-- END BODY -->
 </html>

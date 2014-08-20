@@ -28,7 +28,7 @@ Reach.create([{name: "Campus Event"},{name: "Hall Event"}])
 Campus.create([{name: "Indian Institute of Technology Kharagpur", short_name: "iitkgp"},{name: "Indian Institute of Technology Madras", short_name: "iitm"},
 	          {name: "Manipal University", short_name: "mu"}])
 Role.create(name: "superadmin")
-a= User.new(name: "AdminUser",email: "firstuser@test.com", role:"user",password: "11111111", password_confirmation: "11111111")
+a= User.new(name: "AdminUser",email: "firstuser@test.com", role:"user",campus_id: "1",password: "11111111", password_confirmation: "11111111")
 a.skip_confirmation!
 a.save
 a.roles << Role.first 

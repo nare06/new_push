@@ -20,7 +20,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'figaro'
 gem 'koala'
 gem 'linkedin'
-gem 'carrierwave'
+#gem 'carrierwave'
 gem 'ckeditor'
 gem 'paperclip'
 gem "rails_admin", "~> 0.6.1"
@@ -45,8 +45,10 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-  gem 'pg', '0.15.1'
-group :development, :test do
+gem 'pg', '0.15.1'
+gem "compass-rails", "~> 1.1.2"
+gem "font-awesome-rails", '4.1.0.0'
+group :development do
   gem 'rspec-rails', '2.13.1'
   gem 'faker', '0.3.1'
   gem 'debugger'

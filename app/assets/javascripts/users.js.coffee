@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $("input[id*='domain_ids']").click ->
+  $("input[id*='event_type_ids']").click ->
     if $(@).prop('checked')
       $(@).parent().removeClass('label_box')
       $(@).parent().addClass('label_add')
@@ -10,7 +10,7 @@ jQuery ->
       $(@).parent().removeClass('label_add')
       $(@).parent().addClass('label_box')
 jQuery ->
-  $("input[id*='category_ids']").click ->
+  $("input[id*='topic_ids']").click ->
     if $(@).prop('checked')
       $(@).parent().removeClass('label_box')
       $(@).parent().addClass('label_add')

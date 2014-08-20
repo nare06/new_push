@@ -32,11 +32,11 @@
       <div style="word-wrap: break-word;">
         <% if @user.userfavorites.include?(event) %>       
          <%= link_to favorite_event_path(event, type: "unfavorite"),{ method: :put ,title: "unfavorite"} do %>
-            <i class="icon icon-star" style="color: rgba(0, 0, 0, 0.74);"></i>
+            <i class="fa fa-star" style="color: rgba(0, 0, 0, 0.74);"></i>
             <% end %>
         <% else %>
          <%= link_to favorite_event_path(event, type: "favorite"), {method: :put,title: "favorite"} do %>
-            <i class="icon icon-star-empty" style="color: rgba(0, 0, 0, 0.74);"></i>
+            <i class="fa fa-star-o" style="color: rgba(0, 0, 0, 0.74);"></i>
             <% end %>
          <% end %>
     
@@ -48,9 +48,9 @@
       <tbody>
   <!-==============---Second column table----==============------>
         <tr>    
-         <td class="eventrow2"><i class="icon icon-calendar"></i> 
+         <td class="eventrow2"><i class="fa fa-calendar"></i> 
            <%=event.sdatetime.strftime("%d %b %I:%M %p")%> - <%=event.edatetime.strftime("%d %b %I:%M %p")%></td></tr>
-        <tr><td class="eventrow2"><i class="icon icon-map-marker"> </i>
+        <tr><td class="eventrow2"><i class="fa fa-map-marker"> </i>
             <%=event.venue%>, <%=event.campus.name%>
         </td></tr>
     </tbody></table></td>
@@ -58,25 +58,25 @@
     <div class="event_resp">
       <div style="word-wrap: break-word;">
          <% if @user.userfavorites.include?(event) %>       
-          <%= link_to favorite_event_path(event, type: "unfavorite"),{ method: :put ,title: "unfavorite"} do %><i class="icon icon-star" style="color: rgba(0, 0, 0, 0.74);"></i><% end %>
+          <%= link_to favorite_event_path(event, type: "unfavorite"),{ method: :put ,title: "unfavorite"} do %><i class="fa fa-star" style="color: rgba(0, 0, 0, 0.74);"></i><% end %>
           <% else %>
-          <%= link_to favorite_event_path(event, type: "favorite"), {method: :put,title: "favorite"} do  %><i class="icon icon-star-empty" style="color: rgba(0, 0, 0, 0.74);"></i><% end %>
+          <%= link_to favorite_event_path(event, type: "favorite"), {method: :put,title: "favorite"} do  %><i class="fa fa-star-o" style="color: rgba(0, 0, 0, 0.74);"></i><% end %>
          <% end %>    
           <%= link_to event.title,event,class: "event_title" %> <br> <i class="fa fa-users"></i>  <%=event.organizer%>
       </div> 
       <div class="thumbnail">
         <div class="caption">
-            <h4><i class="icon icon-calendar"> </i> 
+            <h4><i class="fa fa-calendar"> </i> 
             <%=event.sdatetime.strftime("%d %b %I:%M %p")%> - <%=event.edatetime.strftime("%d %b %I:%M %p")%></h4>
-            <h4> <i class="icon icon-map-marker"> </i><%=event.venue%>,<%=event.campus.name%></h4>
+            <h4> <i class="fa fa-map-marker"> </i><%=event.venue%>,<%=event.campus.name%></h4>
                 <p><a class="label label-primary">Bee Score: <%= event.shared_by.count%></a>
                    <% if @user.usershares.include?(event) %>
               <%= link_to share_event_path(event, type: "undo share"), method: :put ,:class => "btn btn-primary btn-xs tour_3" do %>
-             <i class="icon icon-share">Un-bee it!</i>
+             <i class="fa fa-share">Un-bee it!</i>
            <% end %>
         <% else %>
           <%= link_to share_event_path(event, type: "share"), method: :put,:class => "btn btn-primary btn-xs" do %>
-           <i class="icon icon-share">Bee it!</i> 
+           <i class="fa fa-share">Bee it!</i> 
         <% end %>
     <% end %>  
     <button type="button" class="btn btn-primary btn-xs" data-container="body" data-toggle="popover" data-placement="top" data-content="<%=event.short_description%>" data-original-title="" title=""><div class="tour_6"><i class="icon icon-eye-open"></i> What!?</div></button>
@@ -92,7 +92,7 @@
      <% end %>
 
    </div>
-           <!-==================- <p>Resposive design ends</p>=======================->
+           <!-==================-Resposive design ends=======================->
            <!-==============---Third column----==============------> 
   <td class = "aRi" width="20%">          
     <div class="aU5"><span class="aRh"><%=event.sdatetime.strftime("%b") %></span><span class="aRg"><%=event.sdatetime.day %></span><span class="aRj"><%=event.sdatetime.strftime("%a") %></span></div>

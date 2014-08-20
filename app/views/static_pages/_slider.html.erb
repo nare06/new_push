@@ -4,7 +4,7 @@
           <div class="item active">
             <div class="row">
               <%# render partial: "box", collection: @categories.limit(12) %>                  
-            <%= collection_check_boxes(nil,:category_ids, Category.all.limit(10).to_a, :id, :name) do |b|
+            <%= collection_check_boxes(nil,:topic_ids, Category.all.limit(10).to_a, :id, :name) do |b|
                 b.label(class: "label_box",style:"background: url(
             #{Category.find(b.value).image_url});"){ b.check_box(class: "hide") + b.text}
                         end %>                          
@@ -13,7 +13,7 @@
 
           <div class="item">
             <div class="row">
-            <%= collection_check_boxes(nil,:category_ids, Category.all.offset(12).to_a, :id, :name) do |b|
+            <%= collection_check_boxes(nil,:event_type_ids, Category.all.offset(12).to_a, :id, :name) do |b|
                 b.label(class: "label_box",style:"background: url(
             #{Category.find(b.value).image_url}) ;"){ b.check_box(class: "hide") + b.text}
                         end %>    <%# render partial: "box", collection: @categories.offset(12) %>        

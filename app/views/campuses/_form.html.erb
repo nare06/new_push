@@ -1,25 +1,17 @@
 <%= form_for(@campus) do |f| %>
-  <% if @campus.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@campus.errors.count, "error") %> prohibited this campus from being saved:</h2>
-
-      <ul>
-      <% @campus.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+ <%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
+     <p>Ex: Indian Institute of Technology Kharagpur, Vellore Institute of Technology</p>
   </div>
   <div class="field">
     <%= f.label :short_name %><br>
-    <%= f.text_field :short_name %>
-  </div>
+    <%= f.text_field :short_name, class: "form-control" %>
+    <p>Ex: IITKGP, VIT</p>
+  </div><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create campus", class: "btn btn-primary" %>
   </div>
 <% end %>

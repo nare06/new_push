@@ -43,8 +43,7 @@ def update
       sign_in @user
       redirect_to @user
   else 
-  flash[:error] = "Couldn't update"
-  redirect_to @user
+  redirect_to @user, notice: "Couldn't Update the User. Please Check the parameters again."
   end
 end
 

@@ -5,7 +5,7 @@
       <div class="navbar navbar-default navbar-fixed-top dark">
       <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<%= demo_path %>">Kampusbee.com </a>
+            <a class="navbar-brand" href="<%= root_path %>">Kampusbee.com </a>
        <!----     <div class="logo">
             <%= image_tag 'logo1.png', size: "130x60"%>
             </div>
@@ -21,7 +21,7 @@
                 
               <ul class="nav navbar-nav navbar-right">
             
-              
+              <!--
                     <li class="dropdown">
                    
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
@@ -44,15 +44,14 @@
                         <li><a href="<%= events_path%>">All Events</a></li>
                         <li class="divider"></li>
              
-                      </ul>
+                      </ul> 
                      
-                    </li>
+                    </li>-->
                     <!--
                     <li><a href="<%= faq_path %>">FAQ</a></li>
                     <li><a href="<%= contact_path %>">Contact Us</a></li>-->
-                  <% if user_signed_in? %>
- 
-              <% if current_user.has_role? :superadmin %>
+        <% if user_signed_in? %>
+          <% if current_user.has_role? :superadmin %>
             <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -70,17 +69,18 @@
                   <li><%= link_to "Preferences", users_preferences_path %></li>  
                   <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>     
          </ul>  
-         </li>           
+                   
          <% else %>      
                 <li><%= link_to "Log in", new_user_session_path %></li> 
                 <li><%= link_to "Sign up", new_user_registration_path %></li>
-                </ul>
-                </li>
+                                              
           <% end %>
-      <div class="navbar-form navbar-right">
+          <li><%=link_to "Create an Event",new_event_path, class:"btn btn-primary btn-xs fontedits wellopac" %></li>
+          </li>
+      <!--<div class="navbar-form navbar-right">
       <%= form_tag search_path, :method => :get do %>                   
       <%= text_field_tag :search, nil, placeholder: 'Search',class:"form-control col-lg-8" %> 
-        <% end %> 
+        <% end %> -->
           </div>                                        
             </div>
             </div>                    

@@ -9,7 +9,7 @@ def show
 		@campus = Campus.friendly.find(params[:id])
 		@campus_events = @campus.events        
 		@reach = Reach.all
-    @events = @campus_events.approved.upcoming.latest || Event.new
+  		@events = @campus_events.approved.upcoming.latest || Event.new
 		@event_reach1   = @campus_events.approved.upcoming.where("reach_id = ?",1).latest     
 		@event_reach2   = @campus_events.approved.upcoming.where("reach_id = ?",2).latest 
 		@trending   = @campus_events.approved.upcoming.latest
@@ -55,7 +55,7 @@ end
 	# POST /campus.json
 	def create
 		@campus = Campus.new(campus_params)
-
+        @campuses = Campus.all.to_a
 		respond_to do |format|
 			if @campus.save
 				format.html { redirect_to @campus, notice: 'Campus was successfully created.' }
@@ -95,11 +95,11 @@ def index
 @events = Event.approved.latest.upcoming
 end
 private
-		def set_campus
-			@campus = Campus.friendly.find(params[:id])
-		end
+def set_campus
+	@campus = Campus.friendly.find(params[:id])
+end
 
 def campus_params
-			params.require(:campus).permit(:name, :short_name, :slug)
-		end
+	params.require(:campus).permit(:name, :short_name, :slug)
+end
 end

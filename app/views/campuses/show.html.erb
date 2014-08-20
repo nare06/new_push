@@ -36,52 +36,52 @@
     
 <!---------================================--Side Bar: End---=========================----------------->
 <!---------================================--Tab Contents: Start---=========================------------>
-    <div class="col-lg-8">
- <div id="myTabContent" class="tab-content eventstr">
-<% if signed_in? %>
-<div class="tab-pane fade active in" id="all">
-<%= render partial: "static_pages/event", collection: @events %>
-</div>
-<div class="tab-pane fade" id="first">
-<%= render partial: "static_pages/event", collection: @event_reach1 %> 
-</div>
-<div class="tab-pane fade" id="second">
-<%= render partial: "static_pages/event", collection: @event_reach2%>        
-</div>
-<div class="tab-pane fade" id="third">
-<%= render partial: "static_pages/event", collection: @myevents %>        
-</div>
-<div class="tab-pane fade" id="fourth">
-<%= render partial: "static_pages/event", collection: @favorites %>        
-</div>
-<div class="tab-pane fade" id="fifth">
-<%= render partial: "static_pages/event", collection: @trending %>        
-</div>
-<div class="tab-pane fade" id="sixth">
-<%= render partial: "static_pages/event", collection: @tab6 %>        
-</div>
-<div class="tab-pane fade" id="seventh">
-<%= render partial: "static_pages/event", collection: @tab7 %>        
-</div>
-<%else%>
-<div class="tab-pane fade active in" id="all">
-<%= render partial: "static_pages/event", collection: @events %>
-</div>
-<div class="tab-pane fade" id="first">
-<%= render partial: "static_pages/event", collection: @event_reach1 %>        
-</div>
-<div class="tab-pane fade" id="second">
-<%= render partial: "static_pages/event", collection: @event_reach2 %>        
-</div>
-<div class="tab-pane fade" id="fifth">
-<%= render partial: "static_pages/event", collection: @trending %>        
-</div>
-<%end%>
+  <div class="col-lg-8">
+    <div id="myTabContent" class="tab-content eventstr">
+    <% if signed_in? %>
+      <div class="tab-pane fade active in" id="all">
+        <%= render partial: "static_pages/event", collection: @events %>
+      </div>
+    <div class="tab-pane fade" id="first">
+        <%= render partial: "static_pages/event", collection: @event_reach1 %> 
+    </div>
+    <div class="tab-pane fade" id="second">
+        <%= render partial: "static_pages/event", collection: @event_reach2%>        
+    </div>
+    <div class="tab-pane fade" id="third">
+        <%= render partial: "static_pages/event", collection: @myevents %>        
+    </div>
+    <div class="tab-pane fade" id="fourth">
+        <%= render partial: "static_pages/event", collection: @favorites %>        
+    </div>
+    <div class="tab-pane fade" id="fifth">
+        <%= render partial: "static_pages/event", collection: @trending %>        
+    </div>
+    <div class="tab-pane fade" id="sixth">
+        <%= render partial: "static_pages/event", collection: @tab6 %>        
+    </div>
+    <div class="tab-pane fade" id="seventh">
+        <%= render partial: "static_pages/event", collection: @tab7 %>        
+    </div>
+  <%else%>
+    <div class="tab-pane fade active in" id="all">
+        <%= render partial: "static_pages/event", collection: @events %>
+    </div>
+    <div class="tab-pane fade" id="first">
+        <%= render partial: "static_pages/event", collection: @event_reach1 %>        
+    </div>
+    <div class="tab-pane fade" id="second">
+        <%= render partial: "static_pages/event", collection: @event_reach2 %>        
+    </div>
+    <div class="tab-pane fade" id="fifth">
+        <%= render partial: "static_pages/event", collection: @trending %>        
+    </div>
+  <%end%>
 </div>
 </div>
 <div class="col-lg-2">
     <%= render partial: "shared/group", collection: @campus_groups %>   
-    <div id="surveyMonkeyInfo"><div><script src="http://www.surveymonkey.com/jsEmbed.aspx?sm=j441FVMJKYRb5qebMx3_2frg_3d_3d"> </script></div>Create your free online surveys with <a href="https://www.surveymonkey.com">SurveyMonkey</a> , the world's leading questionnaire tool.</div>
+    <!--<div id="surveyMonkeyInfo"><div><script src="http://www.surveymonkey.com/jsEmbed.aspx?sm=j441FVMJKYRb5qebMx3_2frg_3d_3d"> </script></div>Create your free online surveys with <a href="https://www.surveymonkey.com">SurveyMonkey</a> , the world's leading questionnaire tool.</div>-->
 </div>      
 </div>
 </div>

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 before_action :save_event, only: [:create]
-before_action :authenticate_user!, except: [:new, :show, :index ]  #:only: [:new, :create ,:blah]
+before_action :authenticate_user!, except: [:new,:create, :show, :index ]  #:only: [:new, :create ,:blah]
  def show
    
    @event = Event.friendly.find(params[:id])
@@ -53,12 +53,14 @@ before_action :authenticate_user!, except: [:new, :show, :index ]  #:only: [:new
      else
     @event = Event.new(event_params)
    end
-     @event.user_id = current_user.id
+     #@event.user_id = current_user.id
+      @event.user_id = 1
        respond_to do |format|
       if @event.save
             
      # debugger
-        format.html { redirect_to @event, notice: 'Event submitted for review.' }
+        #format.html { redirect_to @event, notice: 'Event submitted for review.' }
+        format.html { redirect_to root_path, notice: 'Event submitted for review.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -155,8 +157,8 @@ before_action :authenticate_user!, except: [:new, :show, :index ]  #:only: [:new
       params.require(:event).permit(:email,:contact_name,:title,:sdatetime,:venue,
       :location,:events_description,:short_description,:email,:user,:organizer,
       :edatetime,:contact_phone,{:domain_ids =>[]},{:category_ids =>[]},
-      {:eligible_ids =>[]},:avatar,:web,:reach,:workflow_state,
-      :slug,:campus, :group)                              
+      {:eligible_ids =>[]},:avatar,:web,:reach_id,:workflow_state,
+      :slug,:campus_id, :group_id)                              
     end  
   
 

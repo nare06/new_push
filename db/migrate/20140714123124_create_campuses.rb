@@ -7,5 +7,6 @@ class CreateCampuses < ActiveRecord::Migration
       
       t.timestamps
     end
+    add_index :campuses, :short_name, unique: true
   end
 end

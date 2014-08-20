@@ -2,9 +2,10 @@ class StaticPagesController < ApplicationController
   
   def home
   
-  @campus = Campus.new
+    @campus =  Campus.new 
     #@title = "Home"
     @categories = Category.all
+    redirect_to current_user.campus if signed_in? && current_user.campus
   end
   
   def new_events
@@ -45,7 +46,9 @@ class StaticPagesController < ApplicationController
      end
      end
    def launch
+     @user = User.new
      render :layout => false 
+     
    end
       
 end

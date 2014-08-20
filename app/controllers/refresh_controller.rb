@@ -1,20 +1,21 @@
 class RefreshController < ApplicationController
 before_action :authenticate_user!, only: :myevents
+before_action :selection_check, only: :index
 def index
     @cat = []
     @dom = []
     @eli = []
-    @cat = [params[:category_ids]].flatten.reject(&:blank?) if params[:category_ids]
-    @dom = [params[:domain_ids]].flatten.reject(&:blank?)   if params[:domain_ids]
+    @cat = [params[:topic_ids]].flatten.reject(&:blank?) if params[:topic_ids]
+    @dom = [params[:event_type_ids]].flatten.reject(&:blank?)   if params[:event_type_ids]
     @eli = [params[:eligible_ids]].flatten.reject(&:blank?) if params[:eligible_ids]
     @cat_items= Category.find(@cat)
     @dom_items= Domain.find(@dom)
     @eli_items= Eligible.find(@eli)
     ids =[@cat_items, @dom_items, @eli_items].flatten.reject(&:blank?).collect(&:event_ids).flatten 
-#@cat = Category.find(params[:category][:category_id]) if params[:category][:category_id].present?
- # @dom = Domain.find(params[:domain][:domain_id]) if params[:domain][:domain_id].present?
- # @eli = Eligible.find(params[:eligible][:eligible_id]) if params[:eligible][:eligible_id].present?
-  #ids = [@cat, @dom, @eli].reject(&:blank?).collect(&:event_ids).flatten
+    #@cat = Category.find(params[:category][:category_id]) if params[:category][:category_id].present?
+    # @dom = Domain.find(params[:domain][:domain_id]) if params[:domain][:domain_id].present?
+    # @eli = Eligible.find(params[:eligible][:eligible_id]) if params[:eligible][:eligible_id].present?
+    #ids = [@cat, @dom, @eli].reject(&:blank?).collect(&:event_ids).flatten
     sorted_ids = ids.sort_by{|id| ids.select{|id2| id2 == id}.size}.reverse.uniq
     records = Event.find(sorted_ids).group_by(&:id)
     @all = sorted_ids.map { |id| records[id].first }
@@ -29,6 +30,8 @@ date = params[:date]
 num = params[:num]
 week = params[:week]
 @user = current_user || User.new
+sdate = params[:event][:startdatesearch]
+edate = params[:event][:enddatesearch]
 if date.present?
     time = Date.new(date["year"].to_i,date["month"].to_i,date["day"].to_i)
     @all = Event.approved.upcoming.latest.where("sdatetime > ? and sdatetime < ?", time.beginning_of_day, time.end_of_day)
@@ -42,7 +45,7 @@ if date.present?
      else
      @all = Event.approved.upcoming.latest.where("sdatetime > ? and sdatetime < ?", Time.now.beginning_of_month, Time.now.end_of_month)
      render "index"
-     end
+ end
 end
 
 def myevents
@@ -96,6 +99,13 @@ def search
 @search = params[:search]
 @all = Event.approved.upcoming.latest.search "#{@search}"
 render "index"
+end
+
+private
+
+def selection_check
+   @info=[params[:topic_ids],params[:event_type_ids],params[:eligible_ids]]
+   redirect_to demo_path, notice: "select atleast one to start exploring" if @info.flatten.reject(&:blank?).empty?  
 end
 end
 

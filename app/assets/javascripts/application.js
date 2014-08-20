@@ -1,4 +1,3 @@
-
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
@@ -11,8 +10,8 @@
 //= require users
 //= require jquery-ui.min
 //= require jquery.datetimepicker
-//= require jquery.searchable
 //= require jquery.easing.1.3
 //= require jquery.storage
+//= require jquery.searchable
 //= require jquery.tour
 //= require test
