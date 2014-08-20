@@ -32,6 +32,7 @@ a= User.new(name: "AdminUser",email: "firstuser@test.com", role:"user",campus_id
 a.skip_confirmation!
 a.save
 a.roles << Role.first 
+=begin
 (1..100).each do |i|
 	a = Time.now + rand(10..100).days
 	b = a + rand(2..5).days
@@ -44,6 +45,7 @@ a.domains << Domain.find(rand(1..7))
 a.eligibles << Eligible.find(rand(1..5))
 a.update_column(:workflow_state, "accept")
 end
+=end
 (1..25).each do |i|
  Group.create(name: "Music Society #{i}", short_name: "ETMS#{i}", contact_name: "Test #{i}", 
 	         contact_phone: "888456730#{rand(1..9)}", email: "group#{i}@test.com", campus_id: rand(1..3))
