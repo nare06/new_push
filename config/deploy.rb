@@ -48,8 +48,10 @@ namespace :deploy do
   end
 
   task :symlink_shared do
-    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
-    run "ln -nfs #{shared_path}/tmp/restart.txt #{release_path}/tmp/restart.txt"
+    execute "mkdir -p #{shared_path}/config"
+      upload! StringIO.new(File.read("config/application.yml")), "#{shared_path}/config/application.yml"
+    #upload! '/config/application.yml', '/var/www/kampusbee/shared/application.yml', :via => :scp
+    #execute "ln -nfs #{shared_path}/tmp/restart.txt #{release_path}/tmp/restart.txt"
   end
 
   after :publishing, :symlink_shared

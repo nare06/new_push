@@ -1,6 +1,6 @@
-require 'elasticsearch/model'
+#require 'elasticsearch/model'
 class Event < ActiveRecord::Base
-include Elasticsearch::Model
+#include Elasticsearch::Model
 #attr_accessor :upload, :edate, :contact_phone 
  extend FriendlyId 
   attr_accessible :title,:organizer,:sdatetime,:edatetime,:contact_name,

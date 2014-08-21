@@ -16,7 +16,7 @@ gem "devise", "~> 3.2.2"
 gem 'protected_attributes'
 gem 'json'
 gem 'will_paginate','3.0.3'
-gem 'bootstrap-will_paginate', '0.0.6'
+#gem 'bootstrap-will_paginate', '0.0.6'
 gem 'figaro'
 gem 'koala'
 gem 'linkedin'
@@ -38,13 +38,13 @@ gem 'omniauth-linkedin'
 gem 'google-api-client',:require => 'google/api_client'
 gem 'rmagick',"2.13.2"
 gem 'validates_timeliness', '~> 3.0'
-gem 'delayed_job_active_record'
+#gem 'delayed_job_active_record'
 gem 'mail_form'
-gem 'gmaps4rails'
+#gem 'gmaps4rails'
 gem 'friendly_id', '~> 5.0.0'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+#gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+#gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'pg', '0.15.1'
 gem "compass-rails", "~> 1.1.2"
 gem "font-awesome-rails", '4.1.0.0'
@@ -58,9 +58,9 @@ group :development do
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
-gem 'factory_girl_rails', '4.2.1'
+  #gem 'selenium-webdriver', '2.35.1'
+  #gem 'capybara', '2.1.0'
+#gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'sass-rails', '4.0.1'
@@ -81,6 +81,6 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'open4'
+#gem 'open4'
 #gem 'rubber', '~> 2.7.4'
 
