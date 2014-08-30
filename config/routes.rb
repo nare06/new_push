@@ -2,19 +2,20 @@ NkV1::Application.routes.draw do
 
  root 'static_pages#launch'
  get "/demo" => "static_pages#home", via: "get"
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+ mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
    mount Ckeditor::Engine => '/ckeditor'
    if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-   end
-   resources :contact_forms
- devise_for :users , :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'} 
+   mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+ resources :contact_forms
+ devise_for :users , controllers: { omniauth_callbacks: "users/omniauth_callbacks"} #, :skip => [:omniauth_callbacks, :sessions] 
+
  match '/del_google_calendar_alert', to:'set_alerts#remove_google_calendar_alert', via: 'get'
  match '/del_fb_alert', to:'set_alerts#remove_fb_alert', via: 'delete'
  match '/set_fb_alert', to:'set_alerts#set_fb_alert', via: 'get'
  match '/set_google_calendar_alert', to:'set_alerts#set_google_calendar_alert', via: 'get'
  match '/refresh', to:'refresh#index', via: 'get'
- match '/delfb', to:'push2fb#destroy', via: 'delete'       
+ match '/delfb', to:'set_alerts#remove_fb_alert', via: 'delete'       
  match '/sort', to:'refresh#by_date', via:'get' 
  match '/search', to:'refresh#search', via:'get' 
  match '/myevents', to:'refresh#myevents', via:'get'
@@ -35,7 +36,7 @@ NkV1::Application.routes.draw do
    resources :campuses do
        resources :groups#, only: [:show, :index]      
    end
-   resources :users do
+   resources :users, except: [:create] do
      member do
        get :following, :followers
      end
@@ -51,5 +52,5 @@ NkV1::Application.routes.draw do
   match '/faq', to: 'static_pages#faq', via: 'get'
   match '/our_works', to: 'static_pages#our_works', via: 'get'
   match '/patnerships', to: 'static_pages#patnerships', via: 'get'
-  
+
 end

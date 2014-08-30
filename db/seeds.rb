@@ -14,15 +14,15 @@ Category.create([{name: "Entrepreneurship", image_url: "http://2.bp.blogspot.com
 	            {name: "Web Development", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Fashion", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Photography", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Business", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Politics", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Food", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Films", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Gaming", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
 	            {name: "Travel", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Arts", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"}])
+	            {name: "Arts", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
+	            {name: "Business", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"}])
 Domain.create([{name: "Workshops"},{name: "Seminars"},{name: "Conferences"},{name: "Quizzes"},{name: "Online Competitions"},{name: "Board Meetings"},
-				{name: "Alumni Meetups"}])
+				{name: "Alumni Meetups"}, {name: "Fests"}])
 Eligible.create([{name: "Only B.Tech"},{name: "Only M.Tech"},{name: "Only MBA grads"},{name: "Post Grads"},{name: "College Faculty"}])
 Reach.create([{name: "Campus Event"},{name: "Hall Event"}])
 Campus.create([{name: "Indian Institute of Technology Kharagpur", short_name: "iitkgp"},{name: "Indian Institute of Technology Madras", short_name: "iitm"},

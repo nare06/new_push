@@ -1,4 +1,4 @@
- <div class="splash">
+ <div class="splash background">
 <h1 class="fontedits"><%= @campus.name %></h1>
 </div>
  <div class="container extend"> 
@@ -79,8 +79,8 @@
   <%end%>
 </div>
 </div>
-<div class="col-lg-2">
-    <%= render partial: "shared/group", collection: @campus_groups %>   
+<div>
+    <%= render partial: "shared/group_listing", collection: @campus_groups %>   
     <!--<div id="surveyMonkeyInfo"><div><script src="http://www.surveymonkey.com/jsEmbed.aspx?sm=j441FVMJKYRb5qebMx3_2frg_3d_3d"> </script></div>Create your free online surveys with <a href="https://www.surveymonkey.com">SurveyMonkey</a> , the world's leading questionnaire tool.</div>-->
 </div>      
 </div>

@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
     @campus =  Campus.new 
     #@title = "Home"
     @categories = Category.all
+    @domains = Domain.all
     redirect_to current_user.campus if signed_in? && current_user.campus
   end
   
