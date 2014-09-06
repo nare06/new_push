@@ -13,26 +13,18 @@
       <div class="row">    
         <h1 class="tour_1 fontedits" >Thousands of events around your campus</h1>
         <!--<h3 class="fontedits" > Events that interest you are just a click away!</h3> <br>-->
-        <h4 class="fontedits">....just a click away....</h4>
+        <h4 class="fontedits">Now....Just a click away....</h4>
     <!---<div class="fb-like-box" data-href="http://www.facebook.com/Kampusbeecom" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>-->
    <%# render partial: "shared/video" %>
-        <%= form_tag refresh_path, :method => :get do %><br>
+        <%# form_tag refresh_path, :method => :get do %>
         <%= render partial: "static_pages/slider" %><br> <br>     
         
-        <%=submit_tag "Start exploring",class:"btn btn-primary btn-lg wireframe move fontedits" %>
-        <%=link_to "Skip >>",all_campus_path, class:"btn btn-primary btn-xs wireframe move fontedits skip_move" %>
-        <% end %>    
-      </div><br><br><br> <br>
-    <%= form_tag search_path, :method => :get do %>                   
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-1">
-        <input type="text" class="form-control input-lg">
-       </div>
-       <div class="col-lg-2">
-        <%=submit_tag "Search",class:"btn btn-primary btn-sm input-lg btn-block" %>
-        </div>
-      </div>
-    <br>
+        <%#submit_tag "Start exploring",class:"btn btn-primary btn-lg wireframe move fontedits" %>
+        <%=link_to "All Events",all_campus_path, class:"btn btn-primary btn-xs wireframe move skip_move" %>
+        <%# end %>    
+      </div><br><br><br>
+      <%=link_to "Add an Event. It's free.",new_event_path, class:"btn btn-primary btn-lg wireframe" %><br><br><br>
+   
    <!--     <div class="input-group">
                     <span class="input-group-addon">$</span>
                     <input type="text" class="form-control">
@@ -50,17 +42,18 @@
                   </div>
                     </span>
                   </div>-->
-        <% end %>     
+      </div>
+      </div>
+      <div class="splash">
+      <div class="container">     
     <div class="row">
-     <div class="col-lg-7"> 
-      <ul class="list_style">
-      <li><span class="fa fa-institution"></span>Stay notified about latest happenings in and around your campus</li>
-      <li><span class="fa fa-thumbs-up"></span>Create events for free. It's supereasy.</li>
-      <li><span class="fa fa-lock"></span>Follow users/organizers/campuses/campus groups to Stay informed about your favorite events.</li>
-      <li><span class="fa fa-hand-o-right"></span>Set up reminders just by a single click!</li>      
-      <li><span class="fa fa-envelope"></span>Subscribe to our newsletter to get to know about latest events catalogue</li>
-      <li><span class="fa fa-comments"></span>Easy signup using social network logins</li>                      
-      </ul>
+     <div class="col-lg-7">
+     <div class="row">
+    
+         <%= render partial: "campuses/campus", collection: @campuses %> 
+            </div>
+            
+     <h4>We are reaching campuses at lightening speed... It's just a matter of time.</h4> 
     </div>    
     <div class="col-lg-5 ">  
       <div class="well wellopac">
@@ -83,116 +76,29 @@
     <%end%>                                                        
   </div>
  </div>
-</div> 
+</div> <br> <br>
+</div>
+</div>
+<div class="splash">
+      <div class="container">
+<div class="row">
+   <div class="col-lg-6">
+     <ul class="list_style">
+      <li><span class="fa fa-institution"></span>Stay notified about latest happenings in and around your campus</li>
+      <li><span class="fa fa-angellist"></span>Create events for free. It's supereasy</li>
+      <li><span class="fa fa-drupal"></span>Follow users/organizers/campuses/campus groups/events. Cool! Isn't it? </li>                     
+      </ul>
+      </div>
+   <div class="col-lg-6">
+     <ul class="list_style">
+      <li><span class="fa fa-bell"></span>Set up reminders just by a single click!</li>      
+      <li><span class="fa fa-envelope"></span>Subscribe to our newsletter to get to know about latest events</li>
+      <li><span class="fa fa-comments"></span>Easy signup using social network logins</li>                      
+      </ul>
+      </div>      
+    </div>
 </div>
 </div>        <!--======================= Center stufff===============-->
-<div class="container">
-	<div class="row">
 
-    	<div class="col-xs-12 col-sm-6 col-lg-4">
-			<div class="box">							
-				<div class="icon">
-					<div class="image"><i class="fa fa-thumbs-o-up"></i></div>
-					<div class="info">
-						<h3 class="title">Event Organizers</h3>
-						<p>
-						  You can create event pages for any event in no time. It's free and supereasy. 
-						</p>
-						<div>
-						<a class="btn btn-primary btn-md" href="<%=new_event_path%>">Create an Event</a>
-							
-						</div>
-					</div>
-				</div>
-				<div class="space"></div>
-			</div> 
-		</div>
-			
-     <div class="col-xs-12 col-sm-6 col-lg-4">
-			<div class="box">							
-				<div class="icon">
-					<div class="image"><i class="fa fa-flag"></i></div>
-					<div class="info">
-						<h3 class="title">Participate, debate, discuss and share actively</h3>
-    					<p>
-							Earn BeeScores through active discussions, polls, surveys, feedbacks, suggestions etc. Redeem scores to unlock discount vouchers.  
-						</p>
-						<div class="more">
-							<a href="#" title="Title Link">
-								Read more <i class="fa fa-angle-double-right"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="space"></div>
-			</div> 
-		</div>
-			
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-			<div class="box">							
-				<div class="icon">
-					<div class="image"><i class="fa fa-users"></i></div>
-					<div class="info">
-						<h3 class="title">Build networks inside your campuses</h3>
-    					<p>
-							Create groups inside your campuses. Build activity. 
-						</p>
-						<div class="more">
-							<a href="#" title="Title Link">
-								Read More <i class="fa fa-angle-double-right"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="space"></div>
-			</div> 
-		</div>		    
-		
-	</div>
-</div>
-
-  <div class="featurette" id="sec2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h1>Amazing Features</h1>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-md-2 col-md-offset-2 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-bell"></i>
-          <h4>Alerts</h4>
-          <p>Stay In Sync</p>
-        </div>
-      </div>
-      <div class="col-md-2 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-star"></i>
-          <h4>Events</h4>
-          <p>Access Everywhere</p>
-        </div>
-      </div>
-      <div class="col-md-2 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-users"></i>
-          <h4>Network Groups</h4>
-          <p>Follow other users/organisers. Create/Join groups. Have fun!</p>
-        </div>
-      </div>
-      <div class="col-md-2 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-pencil"></i>
-          <h4>Maximize Visibility</h4>
-          <p>Set up your interests. Get notified about latest events as per your preferences.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><br>
-<div class="container">
-  <%# render partial: "static_pages/group_slider" %><br>
-  <%# render partial: "shared/group", collection: @campus_groups%>   
-</div>
     <!-- End: MAIN CONTENT -->
 

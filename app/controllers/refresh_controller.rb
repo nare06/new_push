@@ -11,7 +11,9 @@ def index
     @cat_items= Category.find(@cat)
     @dom_items= Domain.find(@dom)
     @eli_items= Eligible.find(@eli)
+    ids1 = Event.all.approved.collect(&:id)
     ids =[@cat_items, @dom_items, @eli_items].flatten.reject(&:blank?).collect(&:event_ids).flatten 
+    ids = ids & ids1
     #@cat = Category.find(params[:category][:category_id]) if params[:category][:category_id].present?
     # @dom = Domain.find(params[:domain][:domain_id]) if params[:domain][:domain_id].present?
     # @eli = Eligible.find(params[:eligible][:eligible_id]) if params[:eligible][:eligible_id].present?
@@ -32,9 +34,9 @@ week = params[:week]
 @user = current_user || User.new
 @sdate = params[:event][:startdatesearch]
 @edate = params[:event][:enddatesearch]
-if date.present?
-    time = Date.new(date["year"].to_i,date["month"].to_i,date["day"].to_i)
-    @all = Event.approved.upcoming.latest.where("sdatetime > ? and sdatetime < ?", time.beginning_of_day, time.end_of_day)
+if @sdate.present?
+    #time = Date.new(date["year"].to_i,date["month"].to_i,date["day"].to_i)
+    @all = Event.approved.upcoming.latest.where("sdatetime > ? and sdatetime < ?", @sdate.to_date.beginning_of_day, @edate.to_date.end_of_day)
     render "index"
     elsif num.present?    
      @all = Event.approved.upcoming.latest.where("sdatetime > ? and sdatetime < ?", Time.now.beginning_of_day, Time.now.end_of_day + num.to_i.days)
@@ -78,7 +80,9 @@ def myevents
               end
          @events_array = @categor.flatten << @eligibl.flatten << @domai.flatten
 =end
-    ids = [@cat, @dom, @eli].flatten         
+    ids1 = Event.all.approved.collect(&:id)
+    ids = [@cat, @dom, @eli].flatten 
+    ids = ids & ids1        
     sorted_ids = ids.sort_by{|id| ids.select{|id2| id2 == id}.size}.reverse.uniq
          records = Event.find(sorted_ids).group_by(&:id)
          @all = sorted_ids.map { |id| records[id].first }

@@ -1,6 +1,6 @@
   $(document).ready(function() {
     $('#event_sdatetime').datetimepicker({
-    step:5,
+    step:15,
     format:'d/m/Y g:i A',
     formatTime:'g:i A',
     timepicker: true,
@@ -9,7 +9,7 @@
   });
    $(document).ready(function() {
     $('#event_edatetime').datetimepicker({
-    step:5,
+    step:15,
     format:'d/m/Y g:i A',
     formatTime:'g:i A',
     timepicker: true,
@@ -18,7 +18,7 @@
   });
    $(document).ready(function() {
     $('#event_startdatesearch').datetimepicker({
-    step:5,
+    step:15,
     format:'d/m/Y',
     //formatTime:'g:i A',
     timepicker: false,
@@ -27,33 +27,14 @@
   });
    $(document).ready(function() {
     $('#event_enddatesearch').datetimepicker({
-    step:5,
+    step:15,
     format:'d/m/Y',
     //formatTime:'g:i A',
     timepicker: false,
     lang: 'en',
     minDate: '-1970/01/01'});
   });
-  $(document).ready(function () {
-    $( '#table' ).searchable({
-        striped: true,
-        oddRow: { 'background-color': '#f5f5f5' },
-        evenRow: { 'background-color': '#fff' },
-        searchType: 'fuzzy'
-    });
-    
-    $( '#searchable-container' ).searchable({
-        searchField: '#container-search',
-        selector: '.row',
-        childSelector: '.col-xs-4',
-        show: function( elem ) {
-            elem.slideDown(100);
-        },
-        hide: function( elem ) {
-            elem.slideUp( 100 );
-        }
-    })
-});
+ 
 $(document).ready(function(){
      $(window).scroll(function () {
             if ($(this).scrollTop() > 50) {
@@ -144,13 +125,18 @@ $(document).ready(function() {
   $('#media1').carousel({
     pause: true,
     interval: false
+    
   });
 });
-//////end
- $(document).ready(function() {  
- $('.ckeditor').ckeditor({
-  // optional config
+$(document).ready(function() {
+ var $container = $('#media'),
+    scroll = $container.width();
+    $('a.right.carousel-control').hover(function() {
+    $container.animate({
+        'scrollLeft': scroll
+    }, '500');
+}, function(){
+    $container.stop();
 });
-  });
- 
-		
+});
+//////hover

@@ -1,4 +1,4 @@
- <div class="splash background">
+ <div class="splash campus-background">
 <h1 class="fontedits"><%= @campus.name %></h1>
 </div>
  <div class="container extend"> 
@@ -79,19 +79,23 @@
   <%end%>
 </div>
 </div>
-<div>
+
+<div class="col-lg-2">
     <%= render partial: "shared/group_listing", collection: @campus_groups %>   
+    <%=link_to "Create a group", new_campus_group_path(campus_id: @campus.id) , class: "btn btn-primary btn-sm" %>
+    </div>
     <!--<div id="surveyMonkeyInfo"><div><script src="http://www.surveymonkey.com/jsEmbed.aspx?sm=j441FVMJKYRb5qebMx3_2frg_3d_3d"> </script></div>Create your free online surveys with <a href="https://www.surveymonkey.com">SurveyMonkey</a> , the world's leading questionnaire tool.</div>-->
-</div>      
+ 
+</div>     
 </div>
 </div>
 </div>
-<%= render partial: "static_pages/tour" %>
+<%# render partial: "static_pages/tour" %>
  
 <!---------================================--Tab Contents: End---=========================------------>
-<script type="text/javascript" language="javascript" charset="utf-8">
+<!--<script type="text/javascript" language="javascript" charset="utf-8">
 var created_at = <%= Time.now.to_i %>;
 window.setInterval(function(){
   $.get('<%= new_events_path %>', {created_at: created_at});
 }, 1000000);
-</script> 
+</script>--> 

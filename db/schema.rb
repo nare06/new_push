@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727144203) do
+ActiveRecord::Schema.define(version: 20140906165209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,23 @@ ActiveRecord::Schema.define(version: 20140727144203) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
+
+  add_index "campuses", ["short_name"], name: "index_campuses_on_short_name", unique: true, using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "categories_events", id: false, force: true do |t|
@@ -50,6 +60,13 @@ ActiveRecord::Schema.define(version: 20140727144203) do
   end
 
   add_index "categories_events", ["category_id", "event_id"], name: "index_categories_events_on_category_id_and_event_id", unique: true, using: :btree
+
+  create_table "categories_groups", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "group_id"
+  end
+
+  add_index "categories_groups", ["category_id", "group_id"], name: "index_categories_groups_on_category_id_and_group_id", unique: true, using: :btree
 
   create_table "categories_users", id: false, force: true do |t|
     t.integer "category_id"
@@ -95,6 +112,10 @@ ActiveRecord::Schema.define(version: 20140727144203) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "domains_events", id: false, force: true do |t|
@@ -141,7 +162,6 @@ ActiveRecord::Schema.define(version: 20140727144203) do
   create_table "events", force: true do |t|
     t.string   "title"
     t.string   "organizer"
-    t.string   "location"
     t.datetime "sdatetime"
     t.datetime "edatetime"
     t.string   "contact_name"
@@ -198,14 +218,18 @@ ActiveRecord::Schema.define(version: 20140727144203) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "groups", force: true do |t|
-    t.string  "name"
-    t.string  "slug"
-    t.text    "description"
-    t.string  "short_name"
-    t.string  "contact_name"
-    t.string  "contact_phone"
-    t.string  "email"
-    t.integer "campus_id"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.string   "short_name"
+    t.string   "contact_name"
+    t.string   "contact_phone"
+    t.string   "email"
+    t.integer  "campus_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "groups", ["campus_id"], name: "index_groups_on_campus_id", using: :btree

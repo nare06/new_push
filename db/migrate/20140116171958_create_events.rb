@@ -3,7 +3,6 @@ class CreateEvents < ActiveRecord::Migration
       create_table :events do |t|
       t.string :title
       t.string :organizer
-      t.string :location
       t.datetime :sdatetime
       t.datetime :edatetime
       t.string :contact_name

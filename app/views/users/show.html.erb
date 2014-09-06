@@ -18,9 +18,10 @@
             <div class="col-lg-3">
           
    <strong> Name </strong> <%=@user.name %><br>
-     <strong> URL </strong> <%= link_to user_path(@user), @user %> 
-     <strong> Microposts </strong> <%= @user.microposts.count %>
-     <a class="label label-primary">NewBee <span class="badge"><%=@user.events.count %></span></a> 
+     <strong> URL </strong> <%= link_to user_path(@user), @user %> <br>
+     <strong> Posts </strong> <%= @user.microposts.count %><br>
+     <a class="label label-primary">NewBee <span class="badge"><%=@user.events.count %></span></a><br><br>
+     
         </div>
           <div class="col-lg-5">
              <b> About Me:</b>
@@ -36,8 +37,32 @@
       <%= render 'microposts/microposts' %>
     <%= will_paginate @microposts %>
    <% end %>
-   </div>
-   <div class="col-lg-4">
+   </div>   
+   <div class="col-lg-4">    
+      <h2>What's brewing inside?</h2>
+        <div class="row">
+          <div class="col-lg-6">
+          <a href="<%=campus_path(@user.campus.id)%>">
+           <div class="featurette-item">
+            <div class="adjust">The campus</div>
+          <i class="fa fa-coffee"></i> 
+             
+        </div>
+        </a> 
+       </div>
+       <div class="col-lg-6">
+   <a href="<%=all_campus_path %>">
+   <div class="featurette-item">
+    <div class="adjust">Across all campuses</div>
+          <i class="fa fa-fire"></i>               
+        </div>
+        </a>
+       </div>
+  </div>
+ </div>
+ </div> 
+  <div class="row">
+   <div class="col-lg-12">
    <% if current_user.id == @user.id %>
        <%= render 'shared/micropost_form' %> 
        <%end%>

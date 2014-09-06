@@ -1,8 +1,8 @@
     <title></title>
     <!-- Start: MAIN CONTENT -->
       <div class="container">
-        <div class="page-header">
-          <h1>Set your preferences!</h1>
+        <div class="page-header"><br>
+          <h1>Choose your interests</h1>
         </div>
               <%= form_for @user,:html => {:class =>"form-horizontal form-signin-signup"} do |f| %>
                <%= render 'shared/error_messages', :object => f.object %>
@@ -50,7 +50,7 @@
          </div>               
                 
         <div class="col-lg-8">  
-              <%= f.collection_select :campus, Campus.all, :id, :name,{class: "form-control"},{:prompt => 'Please select your campus'} %>
+              <%= f.collection_select :campus_id, Campus.all, :id, :name,{:prompt => 'Please select your campus'},{class: "form-control"} %>
           </div>
         </div>
       <div class="row">

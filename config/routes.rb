@@ -44,7 +44,7 @@ NkV1::Application.routes.draw do
    resources :microposts, :only => [:create, :destroy]
    resources :relationships, :only => [:create, :destroy]
 
-  match '/help',    to: 'static_pages#help',    via: 'get'
+  match '/tour',    to: 'static_pages#tour',    via: 'get'
   match '/new_events', to: 'static_pages#new_events', via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'

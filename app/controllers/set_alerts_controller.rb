@@ -18,7 +18,7 @@ def set_fb_alert
         graph = Koala::Facebook::GraphAPI.new(@fauth.token)
          event_info = { :name => @event.title, :description => @event.organizer, :start_time => @event.sdatetime.to_datetime,
               :end_time => @event.edatetime.to_datetime, :privacy => 'FRIENDS'}
-        @dump=graph.put_object('me', 'events', event_info) 
+        @dump=graph.put_connections('me', 'events', event_info, api_version: "v1.0") 
         @push = SetAlert.where(:user_id => @user.id, :event_id => @event.id).first_or_initialize
         @push.user_id =@user.id
         @push.event_id = @event.id

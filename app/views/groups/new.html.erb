@@ -63,10 +63,10 @@
                <label class="col-lg-3 control-label">Topic</label>
                        
                     <div class="col-lg-9">
-  <%= u.collection_check_boxes(:domain_ids, Domain.all, :id, :name) do |b|
+  <%= u.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b|
           b.label(class:"btn btn-default category") { b.check_box(class: "hide") + b.text }
                         end %>
-<%=link_to"Add a new Topic",rails_admin.new_path('Domain'),target:'_blank' %>        
+<%=link_to"Add a new Topic",rails_admin.new_path('Category'),target:'_blank' %>        
                         
                      </div>
                         
@@ -103,7 +103,7 @@
     </div>
                 
       <script type="text/javascript" language="javascript" charset="utf-8">
-           $("input[id*='group_domain_ids']").each(function(){
+           $("input[id*='group_category_ids']").each(function(){
             if($(this).prop('checked')){
                $(this).parent().removeClass('btn-default');
                $(this).parent().addClass('btn-info');

@@ -66,10 +66,18 @@ jQuery ->
       $(@).parent().removeClass('btn-info')
       $(@).parent().addClass('btn-default') 
 jQuery ->
+  $("input[id*='group_category_ids']").click ->
+    if $(@).prop('checked')
+      $(@).parent().removeClass('btn-default')
+      $(@).parent().addClass('btn-info')
+    else
+      $(@).parent().removeClass('btn-info')
+      $(@).parent().addClass('btn-default')   
+jQuery ->
   $("input[id*='group_domain_ids']").click ->
     if $(@).prop('checked')
       $(@).parent().removeClass('btn-default')
       $(@).parent().addClass('btn-info')
     else
       $(@).parent().removeClass('btn-info')
-      $(@).parent().addClass('btn-default')                        
+      $(@).parent().addClass('btn-default')  

@@ -2,6 +2,7 @@
 class Event < ActiveRecord::Base
 #include Elasticsearch::Model
 #attr_accessor :upload, :edate, :contact_phone 
+before_save :web_check
  extend FriendlyId 
   attr_accessible :title,:organizer,:sdatetime,:edatetime,:contact_name,
                   :contact_phone, :email,:short_description,:events_description,
@@ -21,19 +22,19 @@ class Event < ActiveRecord::Base
 
 #----------------------Validations----------------------------#
 validates :title, :presence => true, length: {maximum: 50}
-validates_datetime :sdatetime, :after => Time.now + 45.minutes 
-validates_datetime :edatetime, :after => :sdatetime
-validates :organizer, :presence => true
+validates_presence_of :sdatetime, :after => Time.now + 45.minutes, :message => ": Check Event Start Date"
+validates_presence_of :edatetime, :after => :sdatetime, :message => ": Event End Date should be after start date"
+validates_presence_of :organizer,:message => ": who?"
 validates :venue, :presence => true
-validates :reach, :presence => true
-validates :campus, :presence => true
-validates :events_description, :presence => true
+validates_presence_of :reach, :message => "  means Event reach: Campus Event or Hall/Bhavan/Group Events"
+validates_presence_of :campus, :message => ": Oops! You missed it!"
+validates_presence_of :events_description, :message => "Add more details about the event"
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-validates :short_description, :presence => true, :length => { :maximum => 140}
+validates :email, format: { with: VALID_EMAIL_REGEX },:allow_blank => true
+validates_presence_of :short_description, :length => { :maximum => 140}, :message => "shouldn't be blank"
 VALID_PHONE = /([0]|\+91)?[789]\d{9}/
-validates :web,:allow_blank => true, :format => URI::regexp(%w(http https)) 
-validates :contact_phone, :presence => true, format: { with: VALID_PHONE }
+validates_presence_of :web,:allow_blank => true#, :format => URI::regexp(%w(http https)) 
+validates :contact_phone,format: { with: VALID_PHONE },:allow_blank => true
 has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
                                 :default_url => "/images/:style/missing.png"
                            
@@ -70,5 +71,10 @@ include Workflow
     end
     state :accepted
     state :rejected
+  end
+
+ private
+  def web_check
+    self.web = "http://" << self.web if self.web[1..4] != "http" and self.web.present? 
   end
 end

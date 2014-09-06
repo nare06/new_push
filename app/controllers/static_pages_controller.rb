@@ -2,11 +2,12 @@ class StaticPagesController < ApplicationController
   
   def home
   
-    @campus =  Campus.new 
+    @campus =  Campus.new
+    @campuses = Campus.all.limit(3) 
     #@title = "Home"
     @categories = Category.all
     @domains = Domain.all
-    redirect_to current_user.campus if signed_in? && current_user.campus
+    #redirect_to current_user.campus if signed_in? && current_user.campus
   end
   
   def new_events
@@ -47,9 +48,10 @@ class StaticPagesController < ApplicationController
      end
      end
    def launch
+     redirect_to demo_path
      @user = User.new
-     render :layout => false 
-     
+     #render :layout => false 
+    
    end
       
 end

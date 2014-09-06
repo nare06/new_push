@@ -9,7 +9,7 @@ def show
 		@campus = Campus.friendly.find(params[:id])
 		@campus_events = @campus.events        
 		@reach = Reach.all
-  		@events = @campus_events.approved.upcoming.latest || Event.new
+  		@events = @campus_events.approved.upcoming.latest.paginate(:page => params[:page], :per_page => 10) || Event.new
 		@event_reach1   = @campus_events.approved.upcoming.where("reach_id = ?",1).latest     
 		@event_reach2   = @campus_events.approved.upcoming.where("reach_id = ?",2).latest 
 		@trending   = @campus_events.approved.upcoming.latest
@@ -58,7 +58,7 @@ end
         @campuses = Campus.all.to_a
 		respond_to do |format|
 			if @campus.save
-				format.html { redirect_to @campus, notice: 'Campus was successfully created.' }
+				format.html { redirect_to @campus, notice: 'Campus successfully created.' }
 				format.json { render action: 'show', status: :created, location: @campus }
 			else
 				format.html { render action: 'new' }
@@ -72,7 +72,7 @@ end
 	def update
 		respond_to do |format|
 			if @campus.update(campus_params)
-				format.html { redirect_to @campus, notice: 'Campus was successfully updated.' }
+				format.html { redirect_to @campus, notice: 'Campus successfully updated.' }
 				format.json { head :no_content }
 			else
 				format.html { render action: 'edit' }

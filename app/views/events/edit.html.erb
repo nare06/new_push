@@ -70,7 +70,7 @@
                          
             <label class="col-lg-3 control-label">Location</label>
                         <div class="col-lg-9">
-                          <%= u.text_field :location, autocomplete: 'off',class: 'form-control',:placeholder => 'place'  %>
+                          <%# u.text_field :location, autocomplete: 'off',class: 'form-control',:placeholder => 'place'  %>
                         </div>
                       </div> 
                       <!--Start date and end date-->
@@ -78,6 +78,7 @@
                          
                           <label class="col-lg-3 control-label">Event From To</label>
                        <div class="col-lg-9">
+                        <%#u.datetime_field :sdatetime, readonly: 'readonly',class: 'form-control',placeholder: 'From', value: "#{:sdatetime}" %> 
                  <%= u.datetime_select :sdatetime, class: 'form-control'%> 
                  <%= u.datetime_select :edatetime,class: 'form-control'%>  
                         </div>

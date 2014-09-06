@@ -67,6 +67,7 @@ def self.new_with_session(params,session)
            user.password = Devise.friendly_token[0,10]
            user.name = auth.info.name
            user.email = auth.info.email
+           user.role = "user"
            user.skip_confirmation!
            auth.provider == "twitter" ?  user.save(:validate => false) :  user.save 
       end      

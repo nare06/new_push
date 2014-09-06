@@ -5,24 +5,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Category.create([{name: "Entrepreneurship", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Music", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Sports", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Robotics", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Dance", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Debates", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Web Development", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Fashion", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Photography", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Politics", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Food", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Films", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Gaming", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Travel", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Arts", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"},
-	            {name: "Business", image_url: "http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"}])
-Domain.create([{name: "Workshops"},{name: "Seminars"},{name: "Conferences"},{name: "Quizzes"},{name: "Online Competitions"},{name: "Board Meetings"},
-				{name: "Alumni Meetups"}, {name: "Fests"}])
+Category.create([{name: "Entrepreneurship", image_url: "fa-users"},
+	            {name: "Music", image_url: "fa-music"},
+	            {name: "Sports", image_url: "fa-soccer-ball-o"},
+	            {name: "Robotics", image_url: "fa-android"},
+	            {name: "Dance", image_url: "fa-pied-piper-alt"},
+	            {name: "Debates", image_url: "fa-bullhorn"},
+	            {name: "Social Meetups", image_url: "fa-beer"},
+	            {name: "Fashion", image_url: "fa-foursquare"},
+	            {name: "Photography", image_url: "fa-camera-retro"},
+	            {name: "Politics", image_url: "fa-bomb"},
+	            {name: "Food", image_url: "fa-cutlery"},
+	            {name: "Films", image_url: "fa-film"},
+	            {name: "Gaming", image_url: "fa-gamepad"},
+	            {name: "Web Development", image_url: "fa-cubes"},
+	            {name: "Travel", image_url: "fa-plane"},
+	            {name: "Arts", image_url: "fa-paint-brush"},
+	            {name: "Business", image_url: "fa-line-chart"}])
+Domain.create([{name: "Workshops", image_url: "fa-cogs"},
+				{name: "Seminars", image_url: "fa-line-chart"},
+				{name: "Conferences", image_url: "fa-sitemap"},
+				{name: "Quizzes", image_url: "fa-trophy"},
+				{name: "Online Competitions", image_url: "fa-line-chart"},
+				{name: "Presentations", image_url: "fa-slideshare"},
+				{name: "Alumni Meetups", image_url: "fa-graduation-cap"},
+				{name: "Fests", image_url: "fa-magic"}])
 Eligible.create([{name: "Only B.Tech"},{name: "Only M.Tech"},{name: "Only MBA grads"},{name: "Post Grads"},{name: "College Faculty"}])
 Reach.create([{name: "Campus Event"},{name: "Hall Event"}])
 Campus.create([{name: "Indian Institute of Technology Kharagpur", short_name: "iitkgp"},{name: "Indian Institute of Technology Madras", short_name: "iitm"},
@@ -32,7 +39,7 @@ a= User.new(name: "AdminUser",email: "firstuser@test.com", role:"user",campus_id
 a.skip_confirmation!
 a.save
 a.roles << Role.first 
-=begin
+if Rails.env.development?
 (1..100).each do |i|
 	a = Time.now + rand(10..100).days
 	b = a + rand(2..5).days
@@ -45,8 +52,9 @@ a.domains << Domain.find(rand(1..7))
 a.eligibles << Eligible.find(rand(1..5))
 a.update_column(:workflow_state, "accept")
 end
-=end
+
 (1..25).each do |i|
  Group.create(name: "Music Society #{i}", short_name: "ETMS#{i}", contact_name: "Test #{i}", 
 	         contact_phone: "888456730#{rand(1..9)}", email: "group#{i}@test.com", campus_id: rand(1..3))
+end
 end

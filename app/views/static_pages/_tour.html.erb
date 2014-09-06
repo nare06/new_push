@@ -1,102 +1,108 @@
-<title></title>
+<div class="container">
+	<div class="row">
 
-		<script type="text/javascript">
-
-        if(!(jQuery.Storage.get("tour") == "true")){
-        	var config = {
-        	    mainTitle: "First time here?!",
-        	    saveCookie: true, 
-        		steps: [
-        		{
-					"name" 		: "tour_1",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"position"	: "TL",
-					"text"		: "Want to stay informed about the events happening inside the campus? Well! We bring to you the event management platform that let's you browse through what's hot inside. User can set up event preferences, social alerts and can promote events too. A bee score will be set to each event.",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_2",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "You can check out all active events on campus here. You can tab through! Trending - will have events sorted based on event bee score. Well! What is beescore?",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_3",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Bee it! - Kampusbee's way of promoting an event. It updates beescore. Each promotion by a user, adds on to the bee score",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_4",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Check out the bee score here! If it says '2'-it means two users have promoted this event",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_5",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Set up your social alerts by a single click!",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_6",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Hover over to know about the brief event description. Event tweet! a 140 character long description of the event ",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_7",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Favorite the event by clicking the star!",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				
-				{
-					"name" 		: "tour_8",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Filter and view events as per your choice here!",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_9",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Check out the featured events here! You can even close the events for easy readability.",
-					"position"	: "BL",
-					"time" 		: 5000
-				},
-				{
-					"name" 		: "tour_10",
-					"bgcolor"	: "black",
-					"color"		: "white",
-					"text"		: "Don't forget to give your feedback! We greatly appreciate it!",
-					"position"	: "BL",
-					"time" 		: 5000
-				}
-				]
-				
-				
-				
-        	};
-
-        	$.tour.start(config);
-
-        }
-
-        </script>
+    	<div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-thumbs-o-up"></i></div>
+					<div class="info">
+						<h3 class="title">Event Organizers</h3>
+						<p>
+						  You can create event pages for any event in no time. It's free and supereasy. 
+						</p>
+						<div>
+						<a class="btn btn-primary btn-md" href="<%=new_event_path%>">Create an Event</a>
+							
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+			
+     <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-flag"></i></div>
+					<div class="info">
+						<h3 class="title">Participate, debate, discuss and share actively</h3>
+    					<p>
+							Earn BeeScores through active discussions, polls, surveys, feedbacks, suggestions etc. Redeem scores to unlock discount vouchers.  
+						</p>
+						<div class="more">
+							<a href="#" title="Title Link">
+								Read more <i class="fa fa-angle-double-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+			
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+			<div class="box">							
+				<div class="icon">
+					<div class="image"><i class="fa fa-users"></i></div>
+					<div class="info">
+						<h3 class="title">Build networks inside your campuses</h3>
+    					<p>
+							Create groups inside your campuses. Build activity. 
+						</p>
+						<div class="more">
+							<a href="#" title="Title Link">
+								Read More <i class="fa fa-angle-double-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>		    
 		
+	</div>
+</div>
+
+  <div class="featurette" id="sec2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>Amazing Features</h1>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2 text-center">
+        <div class="featurette-item">
+          <i class="fa fa-bell"></i>
+          <h4>Alerts</h4>
+          <p>Stay In Sync</p>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="fa fa-star"></i>
+          <h4>Events</h4>
+          <p>Access Everywhere</p>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="fa fa-users"></i>
+          <h4>Network Groups</h4>
+          <p>Follow other users/organisers. Create/Join groups. Have fun!</p>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="fa fa-pencil"></i>
+          <h4>Maximize Visibility</h4>
+          <p>Set up your interests. Get notified about latest events as per your preferences.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+<div class="container">
+  <%# render partial: "static_pages/group_slider" %><br>
+  <%# render partial: "shared/group", collection: @campus_groups%>   
+</div>

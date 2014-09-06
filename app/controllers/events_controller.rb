@@ -8,7 +8,8 @@ before_action :authenticate_user!, except: [:new,:create, :show, :index ]  #:onl
    @domain = @event.domains
    @eligible=@event.eligibles
    @user = current_user || User.new
-   
+   @contact ||= {name: "contact - kampusbee ", contact_phone: " 8884056308",
+               email: "kampusbee@gmail.com" }
   end
 
   # GET /events
@@ -53,14 +54,13 @@ before_action :authenticate_user!, except: [:new,:create, :show, :index ]  #:onl
      else
     @event = Event.new(event_params)
    end
-     #@event.user_id = current_user.id
-      @event.user_id = 1
+     current_user ? @event.user_id = current_user.id : @event.user_id = 1 
        respond_to do |format|
       if @event.save
             
      # debugger
         #format.html { redirect_to @event, notice: 'Event submitted for review.' }
-        format.html { redirect_to root_path, notice: 'Event submitted for review.' }
+        format.html { redirect_to @event, notice: 'Event submitted for review.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -149,13 +149,14 @@ before_action :authenticate_user!, except: [:new,:create, :show, :index ]  #:onl
     # Never trust parameters from the scary internet, only allow the white list through.
   def save_event
   @event = Event.new(event_params)
-    session[:events]=@event.attributes
+   @event.web = "http://" << @event.web  if @event.web[1..4] != "http" and @event.web.present?
+    #session[:events]=@event.attributes
   end
 
 
     def event_params
       params.require(:event).permit(:email,:contact_name,:title,:sdatetime,:venue,
-      :location,:events_description,:short_description,:email,:user,:organizer,
+      :events_description,:short_description,:email,:user,:organizer,
       :edatetime,:contact_phone,{:domain_ids =>[]},{:category_ids =>[]},
       {:eligible_ids =>[]},:avatar,:web,:reach_id,:workflow_state,
       :slug,:campus_id, :group_id)                              
