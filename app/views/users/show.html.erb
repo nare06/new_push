@@ -41,6 +41,7 @@
    <div class="col-lg-4">    
       <h2>What's brewing inside?</h2>
         <div class="row">
+         <% if @user.campus.present?%>
           <div class="col-lg-6">
           <a href="<%=campus_path(@user.campus.id)%>">
            <div class="featurette-item">
@@ -50,6 +51,7 @@
         </div>
         </a> 
        </div>
+       <%end%>
        <div class="col-lg-6">
    <a href="<%=all_campus_path %>">
    <div class="featurette-item">

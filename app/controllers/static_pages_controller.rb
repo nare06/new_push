@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def home
   
     @campus =  Campus.new
-    @campuses = Campus.all.limit(3) 
+    @campuses = Campus.all 
     #@title = "Home"
     @categories = Category.all
     @domains = Domain.all
