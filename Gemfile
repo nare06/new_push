@@ -23,7 +23,7 @@ gem 'linkedin'
 #gem 'carrierwave'
 gem 'ckeditor'
 gem 'paperclip', "~> 4.2"
-gem "rails_admin", "~> 0.6.1"
+gem "rails_admin", "~> 0.6.3"
 gem 'dotenv-rails'
 gem "aws-sdk",'~> 1.5.7'
 gem 'omniauth-facebook'
