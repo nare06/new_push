@@ -17,13 +17,50 @@
     <!---<div class="fb-like-box" data-href="http://www.facebook.com/Kampusbeecom" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>-->
    <%# render partial: "shared/video" %>
         <%# form_tag refresh_path, :method => :get do %>
-        <%= render partial: "static_pages/slider" %><br> <br>     
+        <%= render partial: "shared/domain", collection: @domains.limit(12) %>
+        <%# render partial: "static_pages/slider" %><br><br>     
         
         <%#submit_tag "Start exploring",class:"btn btn-primary btn-lg wireframe move fontedits" %>
         <%=link_to "All Events",all_campus_path, class:"btn btn-primary btn-xs wireframe move skip_move" %>
         <%# end %>    
       </div><br><br><br>
       <%=link_to "Add an Event. It's free.",new_event_path, class:"btn btn-primary btn-lg wireframe" %><br><br><br>
+   
+   <!--     <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                      <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      Dropdown
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Dropdown link</a></li>
+                      <li><a href="#">Dropdown link</a></li>
+                      <li><a href="#">Dropdown link</a></li>
+                     </ul>
+                  </div>
+                    </span>
+                  </div>-->
+      </div>
+      </div>
+      <div class="splash">
+     <div class="container">   
+      <div class="row">    
+        <!--<h3 class="fontedits" > Events that interest you are just a click away!</h3> <br>-->
+        <h4 class="fontedits">Choose by your areas of interest</h4>
+    <!---<div class="fb-like-box" data-href="http://www.facebook.com/Kampusbeecom" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>-->
+   <%# render partial: "shared/video" %>
+        <%# form_tag refresh_path, :method => :get do %>
+       
+        <%= render partial: "static_pages/slider" %><br><br>     
+        
+        <%#submit_tag "Start exploring",class:"btn btn-primary btn-lg wireframe move fontedits" %>
+        <%=link_to "All Events",all_campus_path, class:"btn btn-primary btn-xs wireframe move skip_move" %>
+        <%# end %>    
+      </div><br><br><br>
+      <%=link_to "Sign up for free.",new_user_registration_path, class:"btn btn-primary btn-lg wireframe" %><br><br><br>
    
    <!--     <div class="input-group">
                     <span class="input-group-addon">$</span>
@@ -57,8 +94,8 @@
     </div>    
     <div class="col-lg-5 ">  
       <div class="well wellopac">
-      <h1 class="fontedits">Start here </h1>
-      <h3>Check out the events happening in your campus</h3>  
+      <h2 class="fontedits">Or else start with your campus </h2>
+      <h5>Check out the events happening in your campus</h5>  
         <%=collection_select nil, :campus_id, Campus.all, :short_name, :name,{:prompt => 'Please select your campus'},{:onchange => "document.location = '/campuses/' + this.value", :class => "form-control"} %><br>
       <h5>Campus not available? Add here.</h5>
         <%= form_for @campus do |f| %>

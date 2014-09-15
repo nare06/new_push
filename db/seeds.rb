@@ -21,12 +21,12 @@ Category.create([{name: "Entrepreneurship", image_url: "fa-users"},
 	            {name: "Web Development", image_url: "fa-cubes"},
 	            {name: "Travel", image_url: "fa-plane"},
 	            {name: "Arts", image_url: "fa-paint-brush"},
-	            {name: "Business", image_url: "fa-line-chart"}])
+	            {name: "Business", image_url: "fa-usd"}])
 Domain.create([{name: "Workshops", image_url: "fa-cogs"},
-				{name: "Seminars", image_url: "fa-line-chart"},
+				{name: "Seminars", image_url: "fa-users"},
 				{name: "Conferences", image_url: "fa-sitemap"},
 				{name: "Quizzes", image_url: "fa-trophy"},
-				{name: "Online Competitions", image_url: "fa-line-chart"},
+				{name: "Online Competitions", image_url: "fa-keyboard-o"},
 				{name: "Presentations", image_url: "fa-slideshare"},
 				{name: "Alumni Meetups", image_url: "fa-graduation-cap"},
 				{name: "Fests", image_url: "fa-magic"}])

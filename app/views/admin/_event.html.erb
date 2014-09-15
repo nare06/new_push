@@ -47,10 +47,10 @@
           <% end %></td></tr></tbody></table><div></div></td>
          <td class = "aRi" width="20%"> 
          <div class="aU5"><span class="aRh"><%=event.sdatetime.strftime("%b") %></span><span class="aRg"><%=event.sdatetime.day %></span><span class="aRj"><%=event.sdatetime.strftime("%a") %></span></div>
-       
+       <% if params[:controller] == "admin" %>
          <%= link_to "Accept", approve_path(:id => event.id,:state => "accept"), class: "btn btn-success btn-sm"%>
               <%= link_to "Reject", approve_path(:id => event.id,:state => "reject" ), class: "btn btn-danger btn-sm" %>
-     
+     <% end %>
          </td>                   
   </tr>
           <!-------------------final top  column---------->

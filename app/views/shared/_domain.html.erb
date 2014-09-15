@@ -1,0 +1,11 @@
+<div class="col-xs-6 col-sm-6 col-lg-2<%= " col-lg-offset-4" if domain_counter > 5 and domain_counter < 7 %>">
+<a href="<%=refresh_path(event_type_ids: domain.id)%>">
+<div class="featurette-item white">
+		<div class="adjust"><%=domain.name%></div>
+          <i class="fa <%=domain.image_url%>"></i>
+     
+
+        </div>
+
+</a>
+</div>

@@ -69,8 +69,9 @@
             <h4><i class="fa fa-calendar"> </i> 
             <%=event.sdatetime.strftime("%d %b %I:%M %p")%> - <%=event.edatetime.strftime("%d %b %I:%M %p")%></h4>
             <h4> <i class="fa fa-map-marker"> </i><%=event.venue%>,<%=event.campus.name%></h4>
+              <% if params[:controller] == "event" || params[:controller] == "refresh" %> 
                 <p><a class="label label-primary">Bee Score: <%= event.shared_by.count%></a>
-                   <% if @user.usershares.include?(event) %>
+          <% if @user.usershares.include?(event) %>
               <%= link_to share_event_path(event, type: "undo share"), method: :put ,:class => "btn btn-primary btn-xs tour_3" do %>
              <i class="fa fa-share">Un-bee it!</i>
            <% end %>
@@ -78,11 +79,15 @@
           <%= link_to share_event_path(event, type: "share"), method: :put,:class => "btn btn-primary btn-xs" do %>
            <i class="fa fa-share">Bee it!</i> 
         <% end %>
-    <% end %>  
-    <button type="button" class="btn btn-primary btn-xs" data-container="body" data-toggle="popover" data-placement="top" data-content="<%=event.short_description%>" data-original-title="" title=""><div class="tour_6"><i class="icon icon-eye-open"></i> What!?</div></button>
-    <a href="https://twitter.com/intent/tweet" class="twitter-share-button" data-lang="en" data-text="<%=event.title %>" data-hashtags="<%=event.organizer%>" data-url="http://kampusbee.com/events/<%=event.id%>" data-count="none"  data-via="<%=event.venue%>,<%= event.campus.name%>" >Tweet</a>         
+            <a href="https://twitter.com/intent/tweet" class="twitter-share-button" data-lang="en" data-text="<%=event.title %>" data-hashtags="<%=event.organizer%>" data-url="http://kampusbee.com/events/<%=event.id%>" data-count="none"  data-via="<%=event.venue%>,<%= event.campus.name%>">Tweet</a> 
         </p>
-          
+         
+         <% end %> 
+          <% end %>  
+      <% if params[:controller] == "admin" %>
+         <%= link_to "Accept", approve_path(:id => event.id,:state => "accept"), class: "btn btn-success btn-sm"%>
+              <%= link_to "Reject", approve_path(:id => event.id,:state => "reject" ), class: "btn btn-danger btn-sm" %>
+     <% end %>    
     </div>
                               
     <%if event.avatar.present?%>
@@ -92,6 +97,7 @@
      <% end %>
 
    </div>
+
            <!-==================-Resposive design ends=======================->
            <!-==============---Third column----==============------> 
   <td class = "aRi" width="20%">          
@@ -101,11 +107,17 @@
   <span class="aRg"><%=event.sdatetime.day %></span><span class="aRj"><%=event.sdatetime.strftime("%a") %></span>
   </span>
   </div>
+   <% if params[:controller] == "admin" %>
+         <%= link_to "Accept", approve_path(:id => event.id,:state => "accept"), class: "btn btn-success btn-sm"%>
+              <%= link_to "Reject", approve_path(:id => event.id,:state => "reject" ), class: "btn btn-danger btn-sm" %>
+     <% end %>
+      <% if params[:controller] == "event" || params[:controller] == "refresh" %>
       <div class="tour_5"> 
         <div class="thumbnail">       
           <a href="#" class=" btn btn-primary btn-sm" >
             <i class="fa fa-bell-o"> <span class="res">Alerts!</span></i></a>
             <div class="caption">
+
               <% @push = SetAlert.where(:user_id => @user.id, :event_id => event.id).first_or_initialize %>
               <% if @push.gcpush_id.present? %>
                 <%= link_to @push.gcpush_htmllink, class:"btn btn-social-icon btn-xs btn-google-plus" do %> <i class="fa fa-pencil"> </i><% end%>
@@ -122,6 +134,7 @@
     </div>
   </div>                                       
 </div>
+<% end %>
 </td> 
   <!-=================ends======================---------->               
 </tr>          

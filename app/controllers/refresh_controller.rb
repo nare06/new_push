@@ -32,8 +32,8 @@ date = params[:date]
 num = params[:num]
 week = params[:week]
 @user = current_user || User.new
-@sdate = params[:event][:startdatesearch]
-@edate = params[:event][:enddatesearch]
+@sdate = params[:event][:startdatesearch] if params[:event][:startdatesearch]
+@edate = params[:event][:enddatesearch] if params[:event][:enddatesearch]
 if @sdate.present?
     #time = Date.new(date["year"].to_i,date["month"].to_i,date["day"].to_i)
     @all = Event.approved.upcoming.latest.where("sdatetime > ? and sdatetime < ?", @sdate.to_date.beginning_of_day, @edate.to_date.end_of_day)

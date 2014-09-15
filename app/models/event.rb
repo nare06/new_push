@@ -21,7 +21,7 @@ before_save :web_check
           scope :expired, lambda{where("edatetime < ?", Time.now)}
 
 #----------------------Validations----------------------------#
-validates :title, :presence => true, length: {maximum: 50}
+validates :title, :presence => true, length: {maximum: 150}
 validates_presence_of :sdatetime, :after => Time.now + 45.minutes, :message => ": Check Event Start Date"
 validates_presence_of :edatetime, :after => :sdatetime, :message => ": Event End Date should be after start date"
 validates_presence_of :organizer,:message => ": who?"
